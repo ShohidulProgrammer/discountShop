@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="2dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="15sp"
+            android:text="Some people come into your life as blessings. Other people come into your life as lessons."
+            android:id="@+id/tv_report_and_help_mag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#0A9B0F"
+                android:textStyle="italic"
+                android:text="07-Jan-3020"
+                android:id="@+id/tv_report_and_help_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textStyle="italic"
+                android:textColor="#0A9B0F"
+                android:layout_marginLeft="10dp"
+                android:text="13:50 pm"
+                android:id="@+id/tv_report_and_help_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:background="#23000000"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>

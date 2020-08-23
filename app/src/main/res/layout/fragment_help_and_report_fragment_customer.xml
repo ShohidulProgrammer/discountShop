@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".customers.fragment.HelpAndRprtFragmntCustmr">
+
+
+
+    <LinearLayout
+
+        android:background="@color/overlay_dark_10"
+        android:id="@+id/layoutUserInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="7dp">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/civ_profile_picture"
+            android:layout_width="@dimen/spacing_xmlarge"
+            android:layout_height="@dimen/spacing_xmlarge"
+            android:src="@drawable/defaultpic"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="0"
+            app:civ_border="false" />
+        <View
+            android:layout_width="@dimen/spacing_large"
+            android:layout_height="0dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_customer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Commenter Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="#000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_customer_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:gravity="center_vertical"
+                android:text="Commenter Phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="#000" />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_below="@+id/layoutUserInfo"
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMsg"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/layoutUserInfo"
+        android:layout_above="@+id/layout_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:minHeight="70dp"
+       android:background="#fff"
+        android:orientation="horizontal"
+        android:id="@+id/layout_message"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/spacing_large"
+        android:layout_height="90dp">
+        <EditText
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="45dp"
+            android:maxLines="4"
+            android:padding="8dp"
+            android:backgroundTint="#fff"
+            android:id="@+id/et_reportMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/editTextBG"
+            android:gravity="center_vertical"
+            android:hint="Write review ..."
+            android:minHeight="50dp"
+            tools:targetApi="lollipop" />
+        <ImageView
+            android:id="@+id/iv_reportMsgSend"
+            android:backgroundTint="#fff"
+           android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_send"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            tools:targetApi="lollipop" />
+    </RelativeLayout>
+</RelativeLayout>

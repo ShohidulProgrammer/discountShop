@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shoppingback"
+    tools:context=".activity.OneActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+
+    <TextView
+        android:id="@+id/firti"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:layout_centerInParent="true"
+        android:text="Firti Shop"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/text"
+        android:layout_below="@+id/firti"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:padding="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="All Kings of Medicine and electronic\n products available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text"
+        android:background="@drawable/buttonshape"
+        android:text="Install "
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"/>
+
+</RelativeLayout>

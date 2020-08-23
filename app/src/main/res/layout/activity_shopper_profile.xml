@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".admin.ShopperProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
+
+            <ImageView
+                android:id="@+id/iV_shop_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/shop"
+                app:layout_collapseMode="parallax" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/overlay_dark_10" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarShopProfileAdminPanel"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:scrollingCache="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lyt_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_large" />
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="5dp"
+                    app:cardElevation="10dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:layout_width="@dimen/spacing_mxlarge"
+                            android:layout_height="@dimen/spacing_mxlarge"
+                            android:background="@android:color/transparent"
+                            android:tint="#FFC400"
+                            android:src="@drawable/ic_name" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="About Shop"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="15dp"
+                                    android:layout_height="match_parent" />
+                                <ImageButton
+                                    android:src="@drawable/ic_name"
+                                    android:background="@color/white"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"/>
+
+                                <TextView
+                                    android:id="@+id/tv_shop_name_by_admin"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_large"
+                                    android:text="Haji biriany"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                                    android:textColor="@color/grey_60"
+                                    android:layout_marginLeft="5dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="15dp"
+                                    android:layout_height="match_parent" />
+                                <ImageButton
+                                    android:src="@drawable/ic_location"
+                                    android:background="@color/white"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"/>
+
+                                <TextView
+                                    android:id="@+id/tv_shop_location_by_admin"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_large"
+                                    android:text="Nohakhali"
+                                    android:textSize="13sp"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                                    android:textColor="@color/grey_60"
+                                    android:layout_marginLeft="5dp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="15dp"
+                                    android:layout_height="match_parent" />
+                                <ImageButton
+                                    android:src="@drawable/ic_phone"
+                                    android:background="@color/white"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"/>
+
+                                <TextView
+                                    android:id="@+id/tv_shop_phone_by_admin"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_large"
+                                    android:text="01*********"
+                                    android:textSize="13sp"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                                    android:textColor="@color/grey_60"
+                                    android:layout_marginLeft="5dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="7dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="15dp"
+                                    android:layout_height="match_parent" />
+                                <ImageButton
+                                    android:src="@drawable/ic_email"
+                                    android:background="@color/white"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"/>
+
+                                <TextView
+                                    android:id="@+id/tv_shop_email_by_admin"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_large"
+                                    android:text="somethingbd@gmail.com"
+                                    android:textSize="13sp"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                                    android:textColor="@color/grey_60"
+                                    android:layout_marginLeft="5dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="7dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="15dp"
+                                    android:layout_height="match_parent" />
+                                <ImageButton
+                                    android:src="@drawable/ic_date"
+                                    android:background="@color/white"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"/>
+
+                                <TextView
+                                    android:id="@+id/tv_shop_create_date_by_admin"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_large"
+                                    android:text="24 feb 2019"
+                                    android:textSize="13sp"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                                    android:textColor="@color/grey_60"
+                                    android:layout_marginLeft="5dp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_large" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_margin="5dp"
+                    app:cardElevation="10dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:layout_width="@dimen/spacing_mxlarge"
+                            android:layout_height="@dimen/spacing_mxlarge"
+                            android:background="@android:color/transparent"
+                            android:tint="#FFC400"
+                            android:src="@drawable/food"/>
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Food Item"
+                                android:layout_marginStart="5dp"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="5dp" />
+
+                            <TextView
+                                android:id="@+id/tv_shop_item_by_admin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_middle"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Swimming, playing tennis, cooking are my favorite hobbies"
+                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/grey_60" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_large" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

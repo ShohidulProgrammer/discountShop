@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".shoppers.fragment.ReviewInfoByCustmrFrgmnt">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_review_itemList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fla_review_by_customer"
+        android:layout_alignParentRight="true"
+        android:tint="@color/white"
+        android:src="@drawable/ic_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

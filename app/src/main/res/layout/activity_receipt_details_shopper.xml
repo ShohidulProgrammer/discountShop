@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".admin.ReceiptDetailsShopperActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_report_list_shopperDetails"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@color/white"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <androidx.cardview.widget.CardView
+        android:layout_below="@+id/toolbar_report_list_shopperDetails"
+        android:id="@+id/card"
+        android:layout_margin="3dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/ll_parent"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:padding="2dp"
+                android:id="@+id/ll_customer_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/spacing_large"
+                android:paddingRight="@dimen/spacing_large">
+                <TextView
+                    android:id="@+id/tv_in_shop_name_adminList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Haji Biriany"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    app:fontFamily="sans-serif-medium" />
+                <TextView
+                    android:id="@+id/tv_in_shop_location_adminList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Nohakhali "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    app:fontFamily="sans-serif-medium" />
+                <TextView
+                    android:id="@+id/tv_in_shop_phone_adminList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="017xxxxxxxx "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    app:fontFamily="sans-serif-medium" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <ScrollView
+        android:layout_below="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_margin="3dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:padding="2dp"
+                    android:id="@+id/ll_in_voice_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/in_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="In Voice Number : "
+                        android:textSize="13sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                    <TextView
+                        android:id="@+id/tv_in_voice_number_adminList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12321 "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp"
+                        app:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_below="@+id/ll_in_voice_field"
+                    android:padding="2dp"
+                    android:id="@+id/ll_Coast_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_totalamount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Total Amount : "
+                        android:textSize="13sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                    <TextView
+                        android:id="@+id/tv_total_amount_adminList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="1000 /= "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp"
+                        app:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_below="@+id/ll_Coast_amount"
+                    android:padding="2dp"
+                    android:id="@+id/ll_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_back_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Discount : "
+                        android:textSize="13sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                    <TextView
+                        android:id="@+id/tv_discount_adminList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="10 %"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp"
+                        app:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_below="@+id/ll_discount"
+                    android:padding="2dp"
+                    android:id="@+id/ll_back_money"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_back_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Back Amount : "
+                        android:textSize="13sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                    <TextView
+                        android:id="@+id/tv_back_amount_adminList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp"
+                        app:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_below="@+id/ll_back_money"
+                    android:padding="2dp"
+                    android:id="@+id/ll_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Receipt Submit Date : "
+                        android:textSize="13sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                    <TextView
+                        android:id="@+id/tv_date_adminList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="=01 jan 2020= "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp"
+                        app:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_below="@+id/ll_date"
+                    android:padding="2dp"
+                    android:id="@+id/receipt_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <TextView
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:text="Receipt Image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <ImageView
+                        android:id="@+id/tv_receiptPic_adminList"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Date : "
+                        android:src="@drawable/defaultpic"
+                        android:textSize="13sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_paid_btn"
+                    android:layout_below="@+id/receipt_pic"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:background="@color/colorPrimary"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:text="Need Collect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tv_reject_btn"
+                    android:layout_below="@+id/tv_paid_btn"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:background="#DAC20606"
+                    android:padding="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Reject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_below="@+id/tv_reject_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+</RelativeLayout>

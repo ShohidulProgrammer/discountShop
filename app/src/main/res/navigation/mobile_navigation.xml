@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home_shopper">
+
+    <fragment
+        android:id="@+id/nav_home_shopper"
+        android:name="alamin.game.discountappofshopers.customers.fragment.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home_shopper" />
+
+    <fragment
+        android:id="@+id/nav_offer_shopper"
+        android:name="alamin.game.discountappofshopers.customers.fragment.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_history_shopper" />
+
+    <fragment
+        android:id="@+id/nav_profile_shopper"
+        android:name="alamin.game.discountappofshopers.customers.fragment.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_profile_shopper" />
+
+    <fragment
+        android:id="@+id/rate_up_shopper"
+        android:name="alamin.game.discountappofshopers.customers.fragment.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_share_shopper"
+        android:name="alamin.game.discountappofshopers.customers.fragment.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share_shopper" />
+
+    <fragment
+        android:id="@+id/nav_help_and_report_shopper"
+        android:name="alamin.game.discountappofshopers.customers.fragment.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_help_and_report_shopper" />
+</navigation>

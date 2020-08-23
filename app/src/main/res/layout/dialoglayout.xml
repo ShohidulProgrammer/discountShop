@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:layout_margin="5dp"
+            android:id="@+id/et_post"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:text="What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?"
+            android:lines="4"
+            android:paddingLeft="5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:id="@+id/bt_cancel"
+            android:background="@color/colorAccent"
+            android:textColor="#fff"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Deny" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:textColor="#fff"
+            android:background="#055808"
+            android:layout_weight="1"
+            android:id="@+id/bt_submit"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:text="Allow" />
+    </LinearLayout>
+</LinearLayout>

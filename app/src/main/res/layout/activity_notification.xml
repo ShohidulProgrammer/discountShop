@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#e4d8f4"
+    android:layout_height="match_parent"
+    tools:context=".admin.NotificationActivity">
+
+    <LinearLayout
+        android:id="@+id/notification_input_fill"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:text="Title:"/>
+
+            <EditText
+                android:id="@+id/edtTitle"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:maxLength="15"
+                android:background="@android:drawable/editbox_background_normal"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:text="Message:"/>
+
+            <EditText
+                android:id="@+id/edtMessage"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:maxLength="30"
+                android:minLines="3"
+                android:maxLines="3"
+                android:background="@android:drawable/editbox_background_normal"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple"
+        android:layout_margin="20dp"
+        app:mrl_rippleColor="@color/colorPrimaryDark"
+        app:mrl_rippleDuration="500"
+        app:mrl_rippleHover="true"
+        app:mrl_rippleRoundedCorners="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="@style/Base.Widget.AppCompat.Button"
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background"
+            android:text="Send Notification" />
+    </com.balysv.materialripple.MaterialRippleLayout>
+</LinearLayout>

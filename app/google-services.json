@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "524022366971",
+    "firebase_url": "https://discountappofshopers-259719.firebaseio.com",
+    "project_id": "discountappofshopers-259719",
+    "storage_bucket": "discountappofshopers-259719.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524022366971:android:9995f9a07f8482688ba65e",
+        "android_client_info": {
+          "package_name": "alamin.game.discountappofshopers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524022366971-nktpev5mbf2i68qfbs8opu3ilmeo4i1g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "alamin.game.discountappofshopers",
+            "certificate_hash": "c511167a5021d2c6527eb075dbedc83b52d4e261"
+          }
+        },
+        {
+          "client_id": "524022366971-ika6lg1j9mh3hc3a9i4ctggkq0l18g63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYTYqCHWr39AgjcreyoYhEOJSXVIHVRCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524022366971-ika6lg1j9mh3hc3a9i4ctggkq0l18g63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

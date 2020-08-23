@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="alamin.game.discountappofshopers">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".admin.NotificationActivity"></activity>
+        <activity android:name=".admin.MerchantCreateActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name=".customers.WithdrawActivity" />
+        <activity android:name=".activity.FourActivity" />
+        <activity android:name=".activity.ThreeActivity" />
+        <activity android:name=".activity.TwoActivity" />
+        <activity android:name=".activity.OneActivity" />
+        <activity android:name=".activity.StepActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".admin.SelectedShopReceiptListActivity" />
+        <activity android:name=".appUtils.CheckingActivity" />
+        <activity android:name=".admin.CustomerReviewListActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".shoppers.MapsShopperActivity"
+            android:label="@string/title_activity_maps_shopper" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".admin.ReceiptDetailsShopperActivity" />
+        <activity android:name=".admin.ReportListShopperActivity" />
+        <activity android:name=".admin.ReceiptDetailsActivity" />
+        <activity android:name=".admin.CustomerProfileActivity" />
+        <activity android:name=".admin.ShopperProfileActivity" />
+        <activity android:name=".admin.ReportListCustomerActivity" />
+        <activity
+            android:name=".customers.CustomerMapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".shoppers.ShopProfileCustomerViewActivity" />
+        <activity android:name=".admin.CustomerListActivity" />
+        <activity android:name=".admin.ShopperListActivity" />
+        <activity android:name=".admin.DashboardActivity" />
+        <activity android:name=".shoppers.SingUpActivityShopper" />
+        <activity android:name=".customers.ProfileActivityCustomerEditable" />
+        <activity
+            android:name=".customers.CustomerHomeActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".shoppers.ProfileActivityShopperEditable" />
+        <activity
+            android:name=".shoppers.ShopperHomeActivity"
+            android:label="@string/title_activity_shopper_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".auth.UserSelectActivity" />
+        <activity android:name=".auth.OTPActivity" />
+        <activity android:name=".customers.SingUpActivityCustomer" />
+        <activity android:name=".auth.LoginActivity" />
+        <activity android:name=".activity.SplashActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".activity.MainActivity" />
+    </application>
+
+</manifest>

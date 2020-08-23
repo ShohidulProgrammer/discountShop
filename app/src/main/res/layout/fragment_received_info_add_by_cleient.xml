@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="26dp"
+    android:id="@+id/fragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    tools:context=".shoppers.fragment.RcptInfoAddByClintFrgmnt">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:text=" Time :  "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlCompat" />
+                <EditText
+                    android:id="@+id/et_time"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:hint="time"
+                    android:inputType="number"
+                    android:paddingStart="7dp"
+                    android:paddingLeft="7dp"
+                    android:background="@color/editTextBG"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:text="Date :  "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlCompat" />
+                <EditText
+                    android:id="@+id/et_received_number"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:hint="Date"
+                    android:inputType="number"
+                    android:paddingStart="7dp"
+                    android:paddingLeft="7dp"
+                    android:background="@color/editTextBG"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:text="Receipt image :  "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlCompat" />
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp">
+                        <ImageView
+                            android:id="@+id/iv_received_pic"
+                            android:layout_gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/noimage" />
+                        <ImageView
+                            android:id="@+id/iv_capture_received_pic"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_received_camera"
+                            android:tint="#22C505" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:text="Total Amount :  "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlCompat" />
+                <EditText
+                    android:id="@+id/et_received_amount"
+                    android:paddingLeft="7dp"
+                    android:paddingStart="7dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:hint="*******tk"
+                    android:inputType="number"
+                    android:background="@color/editTextBG"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="What did Your buy (optional) ? "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlCompat" />
+
+                <EditText
+                    android:layout_marginTop="@dimen/margin_medium_10"
+                    android:background="@drawable/custom_button_background"
+                    android:minLines="3"
+                    android:id="@+id/et_customer_choose_item"
+                    android:layout_width="match_parent"
+                    android:hint="What did you buy"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:text="Payment Gateway : "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlCompat" />
+                <Spinner
+                    android:id="@+id/payment_gateway_method"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.498" />
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="12dp"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="Account Number : "
+                    android:textColor="@color/colorPrimary"
+                    app:fontFamily="sans-serif-medium"
+                    tools:ignore="RtlCompat" />
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/et_account_number"
+                        android:textSize="12dp"
+                        android:hint="Account Number"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_account_number"
+                        android:textSize="12dp"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_received_submit"
+                android:layout_marginTop="10dp"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    </ScrollView>
+</LinearLayout>

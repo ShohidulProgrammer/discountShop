@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    tools:context=".customers.fragment.HistoryFragmentCustomer">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_medium_10"
+        android:layout_height="?attr/actionBarSize">
+        <com.ebanx.swipebtn.SwipeButton
+            android:visibility="gone"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:id="@+id/swipeBtnDisabled"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            app:button_image_disabled="@drawable/taka"
+            app:button_image_enabled="@drawable/taka"
+            app:button_background="@drawable/shape_button"
+
+            app:button_image_height="35dp"
+            app:button_image_width="200dp"
+            app:button_left_padding="28dp"
+            app:button_right_padding="28dp"
+            app:initial_state="disabled"
+            app:inner_text="Tab for Balance"
+            app:inner_text_background="@drawable/shape_rounded"
+            app:inner_text_color="@android:color/white"
+            app:inner_text_size="14sp"
+            app:inner_text_top_padding="10dp"
+            app:inner_text_bottom_padding="10dp" />
+        <Button
+            android:id="@+id/total_balance"
+            android:layout_marginLeft="3dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="Tab To Balance "
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_button"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"/>
+        <Button
+            android:id="@+id/btn_withdraw"
+            android:layout_marginLeft="3dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="withdraw "
+
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_button"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"/>
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/rv_customer_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

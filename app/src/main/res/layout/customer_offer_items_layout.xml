@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="220dp">
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/lyt_parent"
+        style="@style/RippleStyleBlack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_shop_logo_customer_offer_item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foreground="@color/overlay_dark_10"
+                android:scaleType="centerCrop"
+                android:src="@drawable/shop"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/overlay_dark_40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_large">
+                <TextView
+                    android:id="@+id/tv_shop_name_customer_offer_item_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="60dp"
+                    android:maxLines="1"
+                    android:textSize="20sp"
+                    android:singleLine="true"
+                    android:text="Item Name"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white"
+                    android:layout_marginEnd="50dp" />
+                <TextView
+                    android:id="@+id/tv_shop_discount_customer_offer_item_layout"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="12%"
+                    android:textSize="20sp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.balysv.materialripple.MaterialRippleLayout>
+</LinearLayout>

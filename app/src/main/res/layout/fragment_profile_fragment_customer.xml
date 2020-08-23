@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".customers.fragment.ProfileFragmentCustomer">
+
+    <RelativeLayout
+        android:id="@+id/nav"
+        android:layout_marginTop="-50dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/profileback"
+        android:paddingTop="60dp"
+        android:paddingLeft="10dp"
+        android:layout_height="220dp">
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/civ_profile_pic_customer"
+            android:src="@drawable/defaultpic"
+            app:civ_border="true"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <TextView
+            android:id="@+id/tv_customer_profile_name"
+            android:layout_marginTop="30dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="Mr. Example"
+            android:textColor="@color/white"
+            android:layout_marginLeft="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <ScrollView
+
+        android:layout_marginTop="110sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/balance_card"
+                app:cardElevation="15dp"
+                app:cardCornerRadius="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/balance_text"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="20sp"
+                        android:text="Personal Info"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:id="@+id/balance_container"
+                        android:layout_below="@+id/balance_text"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="match_parent"
+                        android:paddingLeft="30dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:tint="@color/colorPrimary"
+                                android:src="@drawable/ic_email" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text="Email : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/grey_80"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:id="@+id/tv_customer_profile_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="alamin@gmail.com"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                app:fontFamily="sans-serif-medium"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:tint="@color/colorPrimary"
+                                android:src="@drawable/ic_phone" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text="Phone : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/grey_80"
+                                android:textSize="17sp"
+                                app:fontFamily="sans-serif-medium" />
+
+                            <TextView
+                                android:id="@+id/tv_customer_profile_phone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="+8801315218889"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                app:fontFamily="sans-serif-medium"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:tint="@color/colorPrimary"
+                                android:src="@drawable/ic_gender" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text="Gender : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/grey_80"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:id="@+id/tv_customer_profile_gender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="male"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                app:fontFamily="sans-serif-medium"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:tint="@color/colorPrimary"
+                                android:src="@drawable/ic_date" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text="Date of Birth : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/grey_80"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:id="@+id/tv_customer_profile_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="11-12-2019"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                app:fontFamily="sans-serif-medium"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                app:cardElevation="15dp"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/balance_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_margin="30dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/payment_method"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="20sp"
+                        android:text="Payment Method"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_below="@+id/payment_method"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/method_container"
+                        android:orientation="vertical"
+                        android:padding="10dip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageView
+                                android:id="@+id/bkash_img"
+                                android:layout_width="24dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/bkash" />
+                            <TextView
+                                android:id="@+id/bkash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text=" Bkash       : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#C80E61"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:hint=" 01***********"
+                                android:id="@+id/bkash_nmbr"
+                                android:layout_width="match_parent"
+                                android:inputType="phone"
+                                android:maxLength="11"
+                                android:textColor="#C80E61"
+                                android:textColorHint="#C80E61"
+                                android:layout_height="40dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="8dp"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageView
+                                android:id="@+id/rocket_logo"
+                                android:layout_width="24dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/rocket" />
+
+                            <TextView
+                                android:id="@+id/rocket"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:text=" Rocket     : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#7C3A80"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:hint=" 01***********"
+                                android:id="@+id/rocket_nmbr"
+                                android:layout_width="match_parent"
+                                android:inputType="phone"
+                                android:maxLength="11"
+                                android:textColor="#7C3A80"
+                                android:textColorHint="#7C3A80"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="8dp"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageView
+                                android:id="@+id/surecash_logo"
+                                android:layout_width="24dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/surecash" />
+
+                            <TextView
+                                android:id="@+id/surecash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+
+                                android:text=" SureCash : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#F2C92C"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:hint=" 01***********"
+                                android:id="@+id/surecash_nmbr"
+                                android:layout_width="match_parent"
+                                android:inputType="phone"
+                                android:maxLength="11"
+                                android:textColor="#F2C92C"
+                                android:textColorHint="#F2C92C"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="8dp"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageView
+                                android:id="@+id/mcash_logo"
+                                android:layout_width="24dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/mcash" />
+
+                            <TextView
+                                android:id="@+id/mcash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text=" MCash     : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#20A14F"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:hint=" 01***********"
+                                android:id="@+id/mcash_nmbr"
+                                android:layout_width="match_parent"
+                                android:inputType="phone"
+                                android:maxLength="11"
+                                android:textColor="#20A14F"
+                                android:textColorHint="#20A14F"
+                                android:layout_height="40dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="8dp"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageView
+                                android:id="@+id/mycash_logo"
+                                android:layout_width="24dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/mycash" />
+
+                            <TextView
+                                android:id="@+id/mycash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text=" MyCash   : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#30678C"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:hint=" 01***********"
+                                android:id="@+id/mycash_nmbr"
+                                android:layout_width="match_parent"
+                                android:inputType="phone"
+                                android:maxLength="11"
+                                android:textColor="#30678C"
+                                android:textColorHint="#30678C"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="8dp"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/ucash" />
+
+                            <TextView
+                                android:id="@+id/ucash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text=" UCash      : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#9D3E42"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:hint=" 01***********"
+                                android:id="@+id/ucash_nmbr"
+                                android:layout_width="match_parent"
+                                android:inputType="phone"
+                                android:maxLength="11"
+                                android:textColor="#9D3E42"
+                                android:textColorHint="#9D3E42"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="8dp"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large">
+
+                            <ImageView
+                                android:id="@+id/nogod_logo"
+                                android:layout_width="24dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/nogod" />
+
+                            <TextView
+                                android:id="@+id/nogod"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:text=" Nogod      : "
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#DE3722"
+                                app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:hint=" 01***********"
+                                android:id="@+id/nogod_nmbr"
+                                android:layout_width="match_parent"
+                                android:inputType="phone"
+                                android:textColor="#DE3722"
+                                android:maxLength="11"
+                                android:textColorHint="#DE3722"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="8dp"
+                                />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_customer_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/spacing_mlarge"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        android:background="@color/overlay_dark_50"
+        app:fabSize="normal"
+        android:tint="@color/white"
+        app:layout_anchorGravity="bottom|right|end"
+        app:rippleColor="@color/white"
+        android:src="@drawable/ic_create" />
+</RelativeLayout>

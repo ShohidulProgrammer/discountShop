@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customers.ProfileActivityCustomerEditable">
+
+    <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/app_bar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:contentScrim="?attr/colorPrimary"
+        app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        app:titleEnabled="false">
+
+        <ImageView
+            android:id="@+id/iV_customer_profile_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo1"
+            app:layout_collapseMode="parallax" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/overlay_dark_10" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+</com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:scrollingCache="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_mxlarge">
+
+                <!--                <com.mikhaellopez.circularimageview.CircularImageView-->
+                <!--                    android:id="@+id/image"-->
+                <!--                    android:layout_width="80dp"-->
+                <!--                    android:layout_height="80dp"-->
+                <!--                    android:src="@drawable/defaultpic"-->
+                <!--                    app:civ_border="true"-->
+                <!--                    app:civ_border_color="@color/colorPrimary"-->
+                <!--                    app:civ_border_width="3dp"-->
+                <!--                    app:civ_shadow="true"-->
+                <!--                    app:civ_shadow_radius="0" />-->
+                <RelativeLayout
+
+                    android:id="@+id/relativeLayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_width="115dp"
+                    android:layout_height="115dp">
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        app:civ_shadow_radius="0"
+                        app:civ_shadow="true"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/colorPrimary"
+                        app:civ_border="true"
+                        android:id="@+id/iv_profile_picture_customer"
+                        android:layout_gravity="center"
+                        android:layout_width="180dp"
+                        android:layout_height="140dp"
+                        android:src="@drawable/defaultpic" />
+                    <ImageView
+                        android:src="@drawable/ic_photo_camera"
+                        android:id="@+id/iv_choose_image_customer"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+               >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Name"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <EditText
+                        android:id="@+id/et_customer_name_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:hint="Enter Your Name"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp"
+                        app:fontFamily="sans-serif-medium"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_email" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Email"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:id="@+id/et_customer_email_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:hint="Enter your Email Adderss"
+                        android:textColor="@color/colorPrimary"
+                        android:inputType="textEmailAddress"
+                        android:textSize="15sp"
+                        app:fontFamily="sans-serif-medium"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_phone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Phone"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        android:textSize="17sp"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <TextView
+                        android:id="@+id/tv_customer_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="+8801315218889"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="17sp"
+                        app:fontFamily="sans-serif-medium"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_gender" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Gender"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+                    <RadioGroup
+                        android:id="@+id/rg_choose_gender_customer"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rb_choose_gender_male_customer"
+                            android:text="Male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                            android:id="@+id/rg_choose_gender_femal_customer"
+                            android:text="Female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RadioGroup>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/ic_date" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text="Date of Birth : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <TextView
+                        android:drawableRight="@drawable/ic_keyboard_arrow_down"
+                        android:id="@+id/tv_customer_date_of_birth_edit"
+                        android:gravity="center_vertical"
+                        android:hint=" date of birth "
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/colorPrimary"
+                        android:inputType="date"
+                        android:textSize="15sp"
+                        app:fontFamily="sans-serif-medium"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_down" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageView
+                        android:id="@+id/bkash_img"
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/bkash" />
+                    <TextView
+                        android:id="@+id/bkash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text=" Bkash       : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="#C80E61"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:hint=" 01***********"
+                        android:id="@+id/bkash_nmbr"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:textColor="#C80E61"
+                        android:textColorHint="#C80E61"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                      />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageView
+                        android:id="@+id/rocket_logo"
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/rocket" />
+
+                    <TextView
+                        android:id="@+id/rocket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:text=" Rocket     : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="#7C3A80"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:hint=" 01***********"
+                        android:id="@+id/rocket_nmbr"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:textColor="#7C3A80"
+                        android:textColorHint="#7C3A80"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageView
+                        android:id="@+id/surecash_logo"
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/surecash" />
+
+                    <TextView
+                        android:id="@+id/surecash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+
+                        android:text=" SureCash : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="#F2C92C"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:hint=" 01***********"
+                        android:id="@+id/surecash_nmbr"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:textColor="#F2C92C"
+                        android:textColorHint="#F2C92C"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageView
+                        android:id="@+id/mcash_logo"
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/mcash" />
+
+                    <TextView
+                        android:id="@+id/mcash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text=" MCash     : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="#20A14F"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:hint=" 01***********"
+                        android:id="@+id/mcash_nmbr"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:textColor="#20A14F"
+                        android:textColorHint="#20A14F"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageView
+                        android:id="@+id/mycash_logo"
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/mycash" />
+
+                    <TextView
+                        android:id="@+id/mycash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text=" MyCash   : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="#30678C"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:hint=" 01***********"
+                        android:id="@+id/mycash_nmbr"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:textColor="#30678C"
+                        android:textColorHint="#30678C"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ucash" />
+
+                    <TextView
+                        android:id="@+id/ucash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text=" UCash      : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="#9D3E42"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:hint=" 01***********"
+                        android:id="@+id/ucash_nmbr"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:textColor="#9D3E42"
+                        android:textColorHint="#9D3E42"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxxlarge"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large">
+
+                    <ImageView
+                        android:id="@+id/nogod_logo"
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/nogod" />
+
+                    <TextView
+                        android:id="@+id/nogod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:text=" Nogod      : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="#DE3722"
+                        app:fontFamily="sans-serif-medium" />
+                    <EditText
+                        android:hint=" 01***********"
+                        android:id="@+id/nogod_nmbr"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:textColor="#DE3722"
+                        android:textColorHint="#DE3722"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_save_info_customer"
+                android:text="S a v e"
+                android:textColor="@color/colorPrimary"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:background="@drawable/custom_button_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_xxxlarge"
+                android:layout_margin="10dp"/>
+            <Button
+                android:id="@+id/btn_cancel_info_customer"
+                android:text="C a n c e l"
+                android:textColor="@color/rejected_color"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:backgroundTint="@color/rejected_color"
+                android:textStyle="normal"
+                android:background="@drawable/custom_button_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_xxxlarge"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    tools:context=".shoppers.SingUpActivityShopper">
+
+    <ImageView
+        android:layout_above="@+id/et_user_password_shopper"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/key"
+        android:textColor="@android:color/holo_purple"
+        />
+
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/et_user_password_shopper"
+        android:id="@+id/phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="1"
+        android:ems="10"
+        android:textAlignment="center"
+        android:inputType="textPersonName"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        />
+
+    <EditText
+        android:id="@+id/et_user_password_shopper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:alpha="0.73"
+        android:background="@drawable/textviewshape"
+        android:ems="10"
+        android:hint="Password"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        />
+
+    <ImageButton
+        android:id="@+id/signUpbtn_shopper"
+        android:layout_below="@+id/et_user_password_shopper"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/ic_next"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/buttonshape"
+        android:text="Login"
+        android:textColor="@android:color/black"
+        />
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+

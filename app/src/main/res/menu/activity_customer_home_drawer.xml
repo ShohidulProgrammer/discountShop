@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_customer"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_history_customer"
+            android:icon="@drawable/ic_local_offer"
+            android:title="History" />
+        <item
+            android:id="@+id/nav_profile_customer"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_terms_and_conditions_customer"
+            android:icon="@drawable/ic_terms_and_conditions"
+            android:title="Terms And Conditions" />
+        <item
+            android:id="@+id/rate_up_customer"
+            android:icon="@drawable/ic_rate_us"
+            android:title="Rate Us" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share_customer"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_share" />
+            <item
+                android:id="@+id/nav_help_and_report_customer"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Help and Report" />
+            <item
+                android:id="@+id/nav_logout_customer"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout" />
+        </menu>
+    </item>
+</menu>

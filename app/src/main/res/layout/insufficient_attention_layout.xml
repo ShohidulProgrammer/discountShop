@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/attention"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <View
+            android:layout_width="5dp"
+            android:layout_height="0dp"/>
+        <TextView
+            android:textColor="#f00"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:gravity="center_vertical"
+            android:text="Attention"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_margin="20dp"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:textColor="@color/bg_text"
+        android:text="Your Balance is not Sufficient for Withdraw. When your balance more than 100tk then you can withdraw "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/okbtn"
+        android:textColor="#000"
+        android:text="ok"
+        android:textSize="17sp"
+        android:layout_marginRight="30dp"
+        android:padding="10dp"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=C5:11:16:7A:50:21:D2:C6:52:7E:B0:75:DB:ED:C8:3B:52:D4:E2:61%3Balamin.game.discountappofshopers.activity
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    C5:11:16:7A:50:21:D2:C6:52:7E:B0:75:DB:ED:C8:3B:52:D4:E2:61
+
+    SHA-1 certificate fingerprint:
+    C5:11:16:7A:50:21:D2:C6:52:7E:B0:75:DB:ED:C8:3B:52:D4:E2:61
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <!--    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCNWuZj_RYBtIlEK_6juZ8tYt-ocvFUM5U</string>-->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDZNITSv_x26CApWD_757z_XEkUy2hPIgg</string>
+    <!--    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDYTYqCHWr39AgjcreyoYhEOJSXVIHVRCw</string>-->
+
+</resources>

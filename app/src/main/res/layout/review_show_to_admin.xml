@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_large">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/civ_profile_picture_customer_in_dialog_box"
+            android:layout_width="@dimen/spacing_xmlarge"
+            android:layout_height="@dimen/spacing_xmlarge"
+            android:src="@drawable/defaultpic"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="0"
+            app:civ_border="false" />
+        <View
+            android:layout_width="@dimen/margin_medium_10"
+            android:layout_height="0dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_reviewer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Commenter Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="#000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_customer_phone_number_in_dialog_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:gravity="center_vertical"
+                android:text="Commenter Phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="#000" />
+
+
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/bt_close"
+            android:layout_gravity="fill_horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/ic_close_black" />
+
+    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_shop_name"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="#8D000000"
+                        android:textStyle="normal"
+                        android:text="Shop Location"
+                        android:textSize="9dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_review_text"
+                    android:textColor="#000"
+                    android:textStyle="normal"
+                    android:text="review Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tv_review_time"
+                    android:text="(12-12-2019)"
+                    android:textStyle="italic"
+                    android:textSize="7sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+</LinearLayout>
