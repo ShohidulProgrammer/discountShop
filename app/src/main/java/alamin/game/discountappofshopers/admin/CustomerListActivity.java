@@ -84,10 +84,14 @@ public class CustomerListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 customerArrayList.clear();
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    RegistrationModelCustomer registrationModelCustomer = dataSnapshot1.getValue(RegistrationModelCustomer.class);
-                    customerArrayList.add(registrationModelCustomer);
-                }
+               try {
+                   for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                       RegistrationModelCustomer registrationModelCustomer = dataSnapshot1.getValue(RegistrationModelCustomer.class);
+                       customerArrayList.add(registrationModelCustomer);
+                   }
+               }catch (Exception e){
+
+               }
                 if (customerArrayList.size() > 0) {
                     customerListAdapter = new CustomerListAdapter(CustomerListActivity.this, customerArrayList);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(CustomerListActivity.this);

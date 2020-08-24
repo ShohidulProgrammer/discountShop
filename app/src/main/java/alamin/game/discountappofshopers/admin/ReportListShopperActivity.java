@@ -142,13 +142,13 @@ public class ReportListShopperActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                reportListAdapter.getFilter().filter(s);
+                shopListAdapter1.getFilter().filter(s);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                reportListAdapter.getFilter().filter(s);
+                shopListAdapter1.getFilter().filter(s);
                 return false;
             }
         });
@@ -171,21 +171,21 @@ public class ReportListShopperActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 shopperArrayList.clear();
-                int i = 0;
+                int itemCount = 0;
 
-                Map<String, Object> objectMap = (HashMap<String, Object>)
-                        dataSnapshot.getValue();
-                Log.d("firebase", "\n\n\n\nFirebase objectMap: " + objectMap.values());
+//                Map<String, Object> objectMap = (HashMap<String, Object>)
+//                        dataSnapshot.getValue();
+//                Log.d("firebase", "\n\n\n\nFirebase objectMap: " + objectMap.values());
 
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    i++;
-                    try {
-                        Log.d("firebase", "\n\n\n\nsnapshot No: " + i + " Firebase dataSnapshot1: " + dataSnapshot1 + "\n\n\n\n");
+                try {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        itemCount++;
+                        Log.d("firebase", "\n\n\n\nsnapshot Number: " + itemCount + " Firebase dataSnapshot1: " + dataSnapshot1 + "\n\n\n\n");
                         RegistrationModelShopper registrationModelShopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
                         shopperArrayList.add(registrationModelShopper);
-                    } catch (Exception e) {
-                        Log.e("firebase error", "\n\n\n\nsnapshot No: "+i+" Firebase error: " + e.getMessage());
                     }
+                } catch (Exception e) {
+                    Log.e("firebase error", "\n\n\n\nsnapshot No: " + itemCount + " Firebase error: " + e.getMessage());
                 }
                 Toast.makeText(ReportListShopperActivity.this, "total " + shopperArrayList.size(), Toast.LENGTH_SHORT).show();
                 if (shopperArrayList.size() > 0) {
@@ -200,7 +200,7 @@ public class ReportListShopperActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("The read failed: " ,databaseError.getMessage());
+                Log.e("The read failed: ", databaseError.getMessage());
             }
         });
     }

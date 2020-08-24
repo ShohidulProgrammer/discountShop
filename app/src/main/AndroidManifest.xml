@@ -91,7 +91,9 @@
         <activity android:name=".auth.OTPActivity" />
         <activity android:name=".customers.SingUpActivityCustomer" />
         <activity android:name=".auth.LoginActivity" />
-        <activity android:name=".activity.SplashActivity">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:noHistory="true">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->

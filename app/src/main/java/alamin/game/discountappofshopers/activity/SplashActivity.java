@@ -71,8 +71,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         context = SplashActivity.this;
 
-        // shodidul code start from here
-        // animation code
+        // animation code start from here
         imageView=(ImageView)findViewById(R.id.imgv_logo); // Declare an imageView to show the animation.
         anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_up); // Create the animation.
 
@@ -93,9 +92,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         imageView.startAnimation(anim);
-        // end shodidul code
-
-
+        // end animation code
 
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(SplashActivity.this);
@@ -161,6 +158,7 @@ public class SplashActivity extends AppCompatActivity {
             getLastLocation();
         }
     }
+
 
     private void initFunctionality() {
         if (AppUtils.isNetworkAvailable(SplashActivity.this)) {

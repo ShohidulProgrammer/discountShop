@@ -13,6 +13,7 @@ import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -99,17 +100,26 @@ public class ShopperListActivity extends AppCompatActivity {
 
     }  */
 
-    public void retrieveDataFromShopperList(){
+    public void retrieveDataFromShopperList() {
         databaseReference.child("shopper").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 shopperArrayList.clear();
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    RegistrationModelShopper registrationModelShopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
-                    shopperArrayList.add(registrationModelShopper);
+                int itemCount = 0;
+                try {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        itemCount++;
+                        Log.d("firebase", "\n\n\n\nsnapshot Number: " + itemCount + " Firebase dataSnapshot1: " + dataSnapshot1 + "\n\n\n\n");
+                        RegistrationModelShopper registrationModelShopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
+                        shopperArrayList.add(registrationModelShopper);
+                    }
+
+                } catch (Exception e) {
+                    Log.e("firebase error", "\n\n\n\nsnapshot No: " + itemCount + " Firebase error: " + e.getMessage());
                 }
-                if (shopperArrayList.size()>0){
-                    shopListAdapter = new ShopListAdapter(ShopperListActivity.this,shopperArrayList);
+
+                if (shopperArrayList.size() > 0) {
+                    shopListAdapter = new ShopListAdapter(ShopperListActivity.this, shopperArrayList);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ShopperListActivity.this);
                     rv_shopperLit.setLayoutManager(mLayoutManager);
                     rv_shopperLit.setItemAnimator(new DefaultItemAnimator());
@@ -117,18 +127,20 @@ public class ShopperListActivity extends AppCompatActivity {
 
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
-        if (item.getItemId() == R.id.action_search){
+        if (item.getItemId() == R.id.action_search) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -153,7 +165,7 @@ public class ShopperListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String query) {
-               shopListAdapter.getFilter().filter(query);
+                shopListAdapter.getFilter().filter(query);
                 return false;
             }
         });

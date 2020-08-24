@@ -48,15 +48,20 @@ public class ReportListCustomerActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 receiptModelCustomerArrayList.clear();
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    ReceiptModelCustomer receiptModelCustomer = dataSnapshot1.getValue(ReceiptModelCustomer.class);
-                    if (receiptModelCustomer != null) {
-                        if (receiptModelCustomer.getCollect_money_from_shop_status() == true) {
-                            receiptModelCustomerArrayList.add(receiptModelCustomer);
+                try {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        ReceiptModelCustomer receiptModelCustomer = dataSnapshot1.getValue(ReceiptModelCustomer.class);
+                        if (receiptModelCustomer != null) {
+                            if (receiptModelCustomer.getCollect_money_from_shop_status() == true) {
+                                receiptModelCustomerArrayList.add(receiptModelCustomer);
+                            }
                         }
                     }
+                } catch (Exception e) {
+
                 }
-                if (receiptModelCustomerArrayList.size()>0){
+
+                if (receiptModelCustomerArrayList.size() > 0) {
                     reportListAdapter = new AcReportListAdapter(ReportListCustomerActivity.this, receiptModelCustomerArrayList);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ReportListCustomerActivity.this);
                     rv_reportList_in_admin_panel.setLayoutManager(mLayoutManager);
@@ -64,6 +69,7 @@ public class ReportListCustomerActivity extends AppCompatActivity {
                     rv_reportList_in_admin_panel.setAdapter(reportListAdapter);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -71,12 +77,14 @@ public class ReportListCustomerActivity extends AppCompatActivity {
         });
 
     }
+
     private void initToolbar(String name) {
         Toolbar toolbar = findViewById(R.id.toolbar_report_list);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
