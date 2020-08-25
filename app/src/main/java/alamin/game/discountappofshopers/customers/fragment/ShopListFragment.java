@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
@@ -127,24 +128,8 @@ public class ShopListFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filter(s.toString());
-            }
-        });
-
         retrieveDataFromShopperList();
+        searchShops();
 
         return view;
     }
@@ -233,20 +218,45 @@ public class ShopListFragment extends Fragment implements View.OnClickListener {
         });
     }
 
+    private void searchShops() {
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+    }
+
     private void filter(String text) {
+        Log.d("TAG", "\n\n\nfilter: " + text);
         ArrayList<RegistrationModelShopper> filterList = new ArrayList<>();
         for (RegistrationModelShopper item : shopperArrayList) {
             if (item.getShop_name().toLowerCase().contains(text.toLowerCase())) {
                 filterList.add(item);
             }
         }
-        if (discountAdapter != null) {
-            discountAdapter.filteredList(filterList);
+        if (discountAdapter != null && filterList.size() > 0) {
+//            discountAdapter.filteredList(filterList);
+            discountAdapter = new ShopListWithDiscountAdapter(getContext(), filterList);
+            rv_shop_list_home_customer.setAdapter(discountAdapter);
+            Log.d("TAG", "\n\n\nfilter: " + filterList.toString());
         }
     }
 
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        Log.d("TAG", "\n\n\nfilter onCreateOptionsMenu was called");
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_main, menu);
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(getActivity().SEARCH_SERVICE);
@@ -258,12 +268,14 @@ public class ShopListFragment extends Fragment implements View.OnClickListener {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 discountAdapter.getFilter().filter(query);
+                Log.d("TAG", "\n\n\nfilter submit: " + query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 discountAdapter.getFilter().filter(newText);
+                Log.d("TAG", "\n\n\nfilter onQueryTextChange: " + newText);
                 return false;
             }
         });
