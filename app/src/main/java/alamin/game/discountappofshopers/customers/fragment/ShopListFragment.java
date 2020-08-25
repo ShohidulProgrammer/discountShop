@@ -1,27 +1,18 @@
 package alamin.game.discountappofshopers.customers.fragment;
 
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Looper;
-import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -37,22 +28,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -67,7 +49,7 @@ import alamin.game.discountappofshopers.adapter.ShopListWithDiscountAdapter;
 import alamin.game.discountappofshopers.customers.CustomerMapsActivity;
 import alamin.game.discountappofshopers.model.RegistrationModelShopper;
 
-public class ShopListFragment extends Fragment  implements View.OnClickListener {
+public class ShopListFragment extends Fragment implements View.OnClickListener {
 
     private ShopListAdapter shopListAdapter;
     private DatabaseReference shoplistRef, databaseReferencelocation;
@@ -162,48 +144,95 @@ public class ShopListFragment extends Fragment  implements View.OnClickListener 
             }
         });
 
+        retrieveDataFromShopperList();
+
         return view;
     }
-    @Override
-    public void onStart() {
-        super.onStart();
 
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        shoplistRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                shopperArrayList.clear();
+//
+//                try {
+//                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+//                        RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
+//                        Log.d("firebase", "firebase data: " + shopper.getShop_name());
+//                        if (shopper != null) {
+//                            shopLocationLat = shopper.getLatitude();
+//                            shopLocationLong = shopper.getLongitude();
+//                            if (((myLocationLat - onekmIncrementLat) <= shopLocationLat && shopLocationLat <= (myLocationLat + onekmIncrementLat)) && ((myLocationLong - onekmIncrementLong) <= shopLocationLong && shopLocationLong <= (myLocationLong + onekmIncrementLong))) {
+//                                shopperArrayList.add(shopper);
+//
+//                            }
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    Log.d("firebase", "firebase error: " + e);
+//                }
+//
+//                if (shopperArrayList.size() > 0) {
+//                    discountAdapter = new ShopListWithDiscountAdapter(getActivity(), shopperArrayList);
+//                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+//                    rv_shop_list_home_customer.setLayoutManager(mLayoutManager);
+//                    rv_shop_list_home_customer.setItemAnimator(new DefaultItemAnimator());
+//                    rv_shop_list_home_customer.setAdapter(discountAdapter);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+
+    private void retrieveDataFromShopperList() {
         shoplistRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 shopperArrayList.clear();
 
                 try {
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                         RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
-                        Log.d("firebase", "firebase data: "+shopper);
-                        if (shopper != null){
+
+                        if (shopper != null) {
                             shopLocationLat = shopper.getLatitude();
                             shopLocationLong = shopper.getLongitude();
+
+                            // added nearby shops in list
                             if (((myLocationLat - onekmIncrementLat) <= shopLocationLat && shopLocationLat <= (myLocationLat + onekmIncrementLat)) && ((myLocationLong - onekmIncrementLong) <= shopLocationLong && shopLocationLong <= (myLocationLong + onekmIncrementLong))) {
                                 shopperArrayList.add(shopper);
 
                             }
                         }
                     }
-                    if (shopperArrayList.size()>0){
-                        discountAdapter = new ShopListWithDiscountAdapter(getActivity(), shopperArrayList);
-                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-                        rv_shop_list_home_customer.setLayoutManager(mLayoutManager);
-                        rv_shop_list_home_customer.setItemAnimator(new DefaultItemAnimator());
-                        rv_shop_list_home_customer.setAdapter(discountAdapter);
-                    }
-                }catch (Exception e){
-                    Log.d("firebase", "firebase error: "+e);
+                } catch (Exception e) {
+                    Log.d("firebase", "firebase error: " + e);
                 }
 
+                if (shopperArrayList.size() > 0) {
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+                    rv_shop_list_home_customer.setLayoutManager(mLayoutManager);
+                    rv_shop_list_home_customer.setItemAnimator(new DefaultItemAnimator());
+
+                    discountAdapter = new ShopListWithDiscountAdapter(getContext(), shopperArrayList);
+                    rv_shop_list_home_customer.setAdapter(discountAdapter);
+                }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
+
     private void filter(String text) {
         ArrayList<RegistrationModelShopper> filterList = new ArrayList<>();
         for (RegistrationModelShopper item : shopperArrayList) {
@@ -211,8 +240,11 @@ public class ShopListFragment extends Fragment  implements View.OnClickListener 
                 filterList.add(item);
             }
         }
-        discountAdapter.filteredList(filterList);
+        if (discountAdapter != null) {
+            discountAdapter.filteredList(filterList);
+        }
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -240,7 +272,7 @@ public class ShopListFragment extends Fragment  implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.one:
                 nextActivity(OneActivity.class);
                 break;
@@ -257,7 +289,7 @@ public class ShopListFragment extends Fragment  implements View.OnClickListener 
     }
 
     private void nextActivity(Class selectedClass) {
-        Intent intent = new Intent(getActivity(),selectedClass);
+        Intent intent = new Intent(getActivity(), selectedClass);
         startActivity(intent);
     }
 }
