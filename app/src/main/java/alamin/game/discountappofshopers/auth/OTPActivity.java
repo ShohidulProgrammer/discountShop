@@ -2,19 +2,9 @@ package alamin.game.discountappofshopers.auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Looper;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -25,43 +15,20 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskExecutors;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.mukesh.OtpView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import alamin.game.discountappofshopers.R;
-import alamin.game.discountappofshopers.activity.OneActivity;
-import alamin.game.discountappofshopers.activity.SplashActivity;
 import alamin.game.discountappofshopers.customers.CustomerHomeActivity;
-import alamin.game.discountappofshopers.customers.SingUpActivityCustomer;
-import alamin.game.discountappofshopers.model.LocationModel;
 import alamin.game.discountappofshopers.model.RegistrationModelCustomer;
 import alamin.game.discountappofshopers.model.RegistrationModelShopper;
 import alamin.game.discountappofshopers.shoppers.ShopperHomeActivity;
-import alamin.game.discountappofshopers.shoppers.SingUpActivityShopper;
 
 public class OTPActivity extends AppCompatActivity {
     private static final int PERMISSION_ID = 44;
@@ -75,7 +42,7 @@ public class OTPActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private String gender = "default";
     private String date_of_birth = "default";
-    private String profile_pic_url = "profiel_pic";
+    private String profile_pic_url = "profile_pic";
     private String location = "default";
     private String email = "example@gmail.com";
     private String google_location = "default";
@@ -92,7 +59,7 @@ public class OTPActivity extends AppCompatActivity {
     Button button;
     TextView tv_time_counter, tv_send_phone_number;
     private OtpView otpView;
-    private String Curreemt_Uid;
+    private String Current_Uid;
     FusedLocationProviderClient mFusedLocationClient;
     private FirebaseAuth firebaseAuth;
 
@@ -147,7 +114,7 @@ public class OTPActivity extends AppCompatActivity {
         if (bundle != null) {
             chooser_value = bundle.getString("SelectFromLoginActivity");
             phoneNumber = bundle.getString("phone_number");
-            Curreemt_Uid = bundle.getString("uid");
+            Current_Uid = bundle.getString("uid");
             tv_phone_number.setText(phoneNumber);
 
 

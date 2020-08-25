@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -198,19 +199,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                     movedNextActivity(OTPActivity.class, chooser_user, null);
                 } else if (ref.equals("shopper")) {
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
-                        if (phone.equals(shopper.getShopper_phone())) {
-                            //progressDialog.dismiss();
-                            movedNextActivity(SingUpActivityShopper.class, phone, shopper.getFb_id().toString());
-                            return;
+                    try {
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
+                            if (phone.equals(shopper.getShopper_phone())) {
+                                //progressDialog.dismiss();
+                                movedNextActivity(SingUpActivityShopper.class, phone, shopper.getFb_id().toString());
+                                return;
+                            }
                         }
+                    }catch (Exception e){
+                        Log.d("LoginActivity", "onDataChange error: "+e.getMessage());
                     }
                     movedNextActivity(OTPActivity.class, chooser_user, null);
                 } else {
                     Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
                     startActivity(intent);
-                    //movedNextActivity(OTPActivity.class,chooser_user);
+//                    movedNextActivity(OTPActivity.class,chooser_user);
                     progressDialog.dismiss();
                 }
             }

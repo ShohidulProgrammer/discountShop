@@ -193,7 +193,6 @@ public class ShopListFragment extends Fragment implements View.OnClickListener {
                             // added nearby shops in list
                             if (((myLocationLat - onekmIncrementLat) <= shopLocationLat && shopLocationLat <= (myLocationLat + onekmIncrementLat)) && ((myLocationLong - onekmIncrementLong) <= shopLocationLong && shopLocationLong <= (myLocationLong + onekmIncrementLong))) {
                                 shopperArrayList.add(shopper);
-
                             }
                         }
                     }
