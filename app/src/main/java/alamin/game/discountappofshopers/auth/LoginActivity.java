@@ -180,56 +180,59 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void registration_check(final String ref, final String phone) {
+    private void registration_check(final String userType, final String phone) {
         progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage("loading...");
         progressDialog.show();
-        userRef.child(ref).addValueEventListener(new ValueEventListener() {
+        userRef.child(userType).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (ref.equals("customer")) {
+                if (userType.equals("customer")) {
                     try {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             RegistrationModelCustomer customer = dataSnapshot1.getValue(RegistrationModelCustomer.class);
                             if (phone.equals(customer.getPhone())) {
-                                Log.d("TAG", "\nLogin Successfully to ID: "+dataSnapshot1.getRef());
+                                Log.d("TAG", "\nLogin Successfully to ID: " + dataSnapshot1.getRef());
                                 movedNextActivity(SingUpActivityCustomer.class, phone, customer.getFb_id().toString());
                                 Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                                 //   progressDialog.dismiss();
                                 return;
                             }
                         }
-                        movedNextActivity(OTPActivity.class, chooser_user, null);
                     } catch (Exception e) {
-
+                        Log.d("LoginActivity", "on user DataChange error: " + e.getMessage());
                     }
+                    Log.d("TAG", "You need to Register as a new Customer: ");
+                    movedNextActivity(OTPActivity.class, chooser_user, null);
 
-                } else if (ref.equals("shopper")) {
+                } else if (userType.equals("shopper")) {
+                    Log.d("TAG", "onDataChange userType: " + userType);
                     try {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
                             if (phone.equals(shopper.getShopper_phone())) {
-                                Log.d("TAG", "Login Successfully to ID: "+shopper.getFb_id());
+                                Log.d("TAG", "Login Successfully to ID: " + shopper.getFb_id());
                                 //progressDialog.dismiss();
                                 movedNextActivity(SingUpActivityShopper.class, phone, shopper.getFb_id().toString());
                                 return;
                             }
                         }
-                        movedNextActivity(OTPActivity.class, chooser_user, null);
                     } catch (Exception e) {
-                        Log.d("LoginActivity", "onDataChange error: " + e.getMessage());
+                        Log.d("LoginActivity", "on shopper DataChange error: " + e.getMessage());
                     }
+                    Log.d("TAG", "You need to Register as a new Shopper: ");
+                    movedNextActivity(OTPActivity.class, chooser_user, null);
                 } else {
                     Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
                     startActivity(intent);
-//                    movedNextActivity(OTPActivity.class,chooser_user);
+//                    movedNextActivity(OTPActivity.class, chooser_user, null);
                     progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("TAG", "databaseError: " + databaseError.getMessage());
             }
         });
     }
