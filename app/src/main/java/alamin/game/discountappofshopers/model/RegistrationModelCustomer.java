@@ -68,6 +68,8 @@ public class RegistrationModelCustomer {
         this.sureCash_number = sureCash_number;
     }
 
+
+
     public String getFb_id() {
         return fb_id;
     }

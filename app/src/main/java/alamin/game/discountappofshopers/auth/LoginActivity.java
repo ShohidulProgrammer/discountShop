@@ -188,30 +188,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (ref.equals("customer")) {
-                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        RegistrationModelCustomer customer = dataSnapshot1.getValue(RegistrationModelCustomer.class);
-                        if (phone.equals(customer.getPhone())) {
-                            movedNextActivity(SingUpActivityCustomer.class, phone, customer.getFb_id().toString());
-                            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                            //   progressDialog.dismiss();
-                            return;
+                    try {
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            RegistrationModelCustomer customer = dataSnapshot1.getValue(RegistrationModelCustomer.class);
+                            if (phone.equals(customer.getPhone())) {
+                                Log.d("TAG", "\nLogin Successfully to ID: "+dataSnapshot1.getRef());
+                                movedNextActivity(SingUpActivityCustomer.class, phone, customer.getFb_id().toString());
+                                Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                                //   progressDialog.dismiss();
+                                return;
+                            }
                         }
+                        movedNextActivity(OTPActivity.class, chooser_user, null);
+                    } catch (Exception e) {
+
                     }
-                    movedNextActivity(OTPActivity.class, chooser_user, null);
+
                 } else if (ref.equals("shopper")) {
                     try {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
                             if (phone.equals(shopper.getShopper_phone())) {
+                                Log.d("TAG", "Login Successfully to ID: "+shopper.getFb_id());
                                 //progressDialog.dismiss();
                                 movedNextActivity(SingUpActivityShopper.class, phone, shopper.getFb_id().toString());
                                 return;
                             }
                         }
-                    }catch (Exception e){
-                        Log.d("LoginActivity", "onDataChange error: "+e.getMessage());
+                        movedNextActivity(OTPActivity.class, chooser_user, null);
+                    } catch (Exception e) {
+                        Log.d("LoginActivity", "onDataChange error: " + e.getMessage());
                     }
-                    movedNextActivity(OTPActivity.class, chooser_user, null);
                 } else {
                     Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
                     startActivity(intent);

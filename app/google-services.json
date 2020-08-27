@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "524022366971-d0q06514eh7d2c6l0hu5lp83q7u7lih2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "alamin.game.discountappofshopers",
+            "certificate_hash": "61529e33380d8b4d8fffc84c3cdbea8833628bc5"
+          }
+        },
+        {
+          "client_id": "524022366971-iebgetoq5vg2e0008j55npm0f4bper9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "alamin.game.discountappofshopers",
+            "certificate_hash": "7dc0c98d4e98d739948977ec0c3d04975a013cfd"
+          }
+        },
+        {
           "client_id": "524022366971-nktpev5mbf2i68qfbs8opu3ilmeo4i1g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

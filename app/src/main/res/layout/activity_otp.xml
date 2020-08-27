@@ -2,256 +2,264 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/otp_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/otp_page"
     android:background="@drawable/login"
     tools:context=".auth.OTPActivity">
 
-    <TextView
-        android:layout_above="@+id/et_name"
-        android:id="@+id/phone_number"
-        android:layout_width="match_parent"
-        android:text="***********"
-        android:layout_height="40dp"
-        android:layout_marginRight="40dp"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:layout_marginLeft="40dp"
-        android:textSize="20sp"
-        android:background="@color/overlay_dark_50"
+    <!--    <TextView-->
+    <!--        android:id="@+id/phone_number"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_above="@+id/et_name"-->
+    <!--        android:layout_marginLeft="40dp"-->
+    <!--        android:layout_marginRight="40dp"-->
+    <!--        android:background="@color/overlay_dark_50"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="***********"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="20sp"-->
 
-         />
-    <EditText
-        android:layout_marginTop="10dp"
-        android:id="@+id/et_name"
-        android:layout_above="@+id/pass_container"
-        android:hint="Enter your Name"
+    <!--        />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/et_name"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_above="@+id/pass_container"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:layout_marginLeft="40dp"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:layout_marginRight="40dp"-->
+    <!--        android:background="@color/editTextBG"-->
+    <!--        android:gravity="center"-->
+    <!--        android:hint="Enter your Name"-->
+    <!--        android:inputType="text"-->
+    <!--        android:padding="5dp"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textIsSelectable="false"-->
+    <!--        android:textSize="14dp" />-->
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/pass_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:layout_marginLeft="40dp"-->
+    <!--        android:layout_marginRight="40dp"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/password"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:layout_centerInParent="true"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:background="@color/editTextBG"-->
+    <!--            android:gravity="center"-->
+    <!--            android:hint="Enter your Password"-->
+    <!--            android:inputType="textPassword"-->
+    <!--            android:padding="5dp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:textIsSelectable="false"-->
+    <!--            android:textSize="14dp" />-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/re_type_password"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:layout_below="@+id/password"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:background="@color/editTextBG"-->
+    <!--            android:gravity="center"-->
+    <!--            android:hint="Re-Enter your Password"-->
+    <!--            android:inputType="textPassword"-->
+    <!--            android:padding="5dp"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:textIsSelectable="false"-->
+    <!--            android:textSize="14dp" />-->
+
+    <!--    </LinearLayout>-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/otp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_below="@id/pass_container"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:layout_marginLeft="40dp"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:layout_marginRight="40dp"-->
+    <!--        android:background="@color/editTextBG"-->
+    <!--        android:gravity="center"-->
+    <!--        android:hint="Enter OTP Code"-->
+    <!--        android:inputType="text"-->
+    <!--        android:padding="5dp"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textIsSelectable="false"-->
+    <!--        android:textSize="14dp" />-->
+
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_continue"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_marginLeft="20dp"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        android:layout_marginBottom="20dp"-->
+    <!--        android:background="@drawable/buttonshape"-->
+    <!--        android:text="Continue"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="@color/colorPrimary" />-->
+    <!--    -->
+    <!--</RelativeLayout>-->
+
+
+    <!--    for change design -->
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="14dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:background="@color/editTextBG"
-        android:textIsSelectable="false"
+        android:layout_height="200dp"
+        android:orientation="horizontal">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/loading" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:inputType="text"
-        android:padding="5dp"
-        />
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/pass_container"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_marginTop="10dp"
-            android:id="@+id/password"
-            android:hint="Enter your Password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+        <TextView
+            android:id="@+id/tv_wait_i_sent_you_verification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Wait for the code I sent You \nto"
             android:textAlignment="center"
-            android:gravity="center"
-            android:textSize="14dp"
-            android:background="@color/editTextBG"
-            android:textIsSelectable="false"
-            android:layout_centerInParent="true"
-            android:inputType="textPassword"
-            android:padding="5dp"
-            />
-        <EditText
-            android:id="@+id/re_type_password"
-            android:layout_below="@+id/password"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_wait_i_sent_you_verification"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="0100000000"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone_number"
+            android:layout_centerHorizontal="true" />
+
+
+        <RelativeLayout
+            android:id="@+id/code_box"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textIsSelectable="false"
-            android:textAlignment="center"
-            android:textSize="14dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_margin="50dp"
+            android:layout_below="@+id/progressbar"
+            android:background="#fff">
+
+            <com.mukesh.OtpView
+                android:id="@+id/otpView"
+                android:layout_below="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:inputType="number"
+                android:lines="6"
+                android:scaleX=".8"
+                android:textColor="#CC7CD0"
+                app:itemCount="6"
+                app:lineColor="#CC7CD0"
+                app:lineWidth=".5dp"
+                app:viewType="rectangle" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView1"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/imgView_userIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/colorPrimary"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_phone_code"
+                    android:tint="@color/white" />
+
+                <EditText
+                    android:id="@+id/et_otp_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imgView_userIcon"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imgView_userIcon"
+                    android:background="@color/white"
+                    android:hint="Enter Verification Code"
+                    android:inputType="phone"
+                    android:maxLength="14"
+                    android:paddingLeft="20dp"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_time_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/code_box"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:hint="Re-Enter your Password"
-            android:background="@color/editTextBG"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            />
+            android:text="100"
+            android:textColor="#f00" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_continue"
-        android:layout_alignParentBottom="true"
-        android:text="Continue"
-        android:textColor="@color/colorPrimary"
-        android:textAllCaps="false"
-        android:background="@drawable/buttonshape"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/container"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
 
+        <Button
+            android:id="@+id/btn_otp_verify"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_shape"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    for change design -->
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/relativeLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <pl.droidsonroids.gif.GifImageView-->
-<!--            android:layout_width="120dp"-->
-<!--            android:layout_height="120dp"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:background="@drawable/loading"-->
-<!--        />-->
-
-<!--    </RelativeLayout>-->
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/container"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_wait_i_sent_you_verification"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:textAlignment="center"-->
-<!--            android:text="Wait for the code I sent You \nto"-->
-<!--            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"-->
-<!--            android:textColor="@color/white"-->
-<!--        />-->
-<!--        <TextView-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:id="@+id/tv_send_phone_number"-->
-<!--            android:layout_below="@+id/tv_wait_i_sent_you_verification"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:text="0100000000"-->
-<!--            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"-->
-<!--            android:textSize="18sp"-->
-<!--            android:textColor="#000"-->
-<!--        />-->
-
-<!--        <ProgressBar-->
-<!--            android:id="@+id/progressbar"-->
-<!--            android:layout_below="@id/tv_wait_i_sent_you_verification"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--        />-->
-
-
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/code_box"-->
-<!--            android:layout_below="@+id/progressbar"-->
-<!--            android:background="#fff"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--            <com.mukesh.OtpView-->
-<!--                android:id="@+id/otpView"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_below="@+id/imageView1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:inputType="number"-->
-<!--                android:textColor="#CC7CD0"-->
-<!--                app:itemCount="6"-->
-<!--                android:scaleX=".8"-->
-<!--                app:lineColor="#CC7CD0"-->
-<!--                app:lineWidth=".5dp"-->
-<!--                android:lines="6"-->
-<!--                app:viewType="rectangle" />-->
-<!--            <RelativeLayout-->
-<!--           android:visibility="gone"-->
-<!--            android:id="@+id/relativeLayout1"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/imageView1"-->
-<!--            >-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imgView_userIcon"-->
-<!--                android:layout_width="40dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:background="@color/colorPrimary"-->
-<!--                android:padding="8dp"-->
-<!--                android:src="@drawable/ic_phone_code"-->
-<!--                android:tint="@color/white" />-->
-
-<!--            <EditText-->
-<!--                android:hint="Enter Verification Code"-->
-<!--                android:inputType="phone"-->
-<!--                android:id="@+id/et_verification_code"-->
-<!--                android:maxLength="14"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignBottom="@+id/imgView_userIcon"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_toRightOf="@+id/imgView_userIcon"-->
-<!--                android:background="@color/white"-->
-<!--                android:paddingLeft="20dp"-->
-<!--                android:textSize="15sp" />-->
-<!--        </RelativeLayout>-->
-<!--        </RelativeLayout>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_time_counter"-->
-<!--            android:text="100"-->
-<!--            android:textColor="#f00"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_below="@+id/code_box"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="35dp"-->
-<!--        />-->
-
-<!--    </RelativeLayout>-->
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/layout_btn"-->
-<!--        android:layout_below="@+id/container"-->
-<!--        app:cardCornerRadius="5dp"-->
-<!--        app:cardElevation="10dp"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--        <Button-->
-<!--            android:paddingRight="5dp"-->
-<!--            android:paddingLeft="5dp"-->
-<!--            android:id="@+id/btn_otp_code"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:background="@drawable/button_shape"-->
-<!--            android:text="Continue"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textColor="@color/white" />-->
-<!--    </androidx.cardview.widget.CardView>-->
-<!--</RelativeLayout>-->

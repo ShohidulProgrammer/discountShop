@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.TextureView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -30,13 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import alamin.game.discountappofshopers.PreferenceData;
 import alamin.game.discountappofshopers.R;
-import alamin.game.discountappofshopers.auth.LoginActivity;
-import alamin.game.discountappofshopers.customers.CustomerHomeActivity;
-import alamin.game.discountappofshopers.shoppers.ShopperHomeActivity;
 
 public class SingUpActivityCustomer extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout password_page;
-    private TextView et_user_phone_number;
+    private TextView tv_phone_number;
     private ImageButton signUpbtn;
     private String chooser_value;
     private FirebaseAuth firebaseAuth;
@@ -73,7 +68,7 @@ public class SingUpActivityCustomer extends AppCompatActivity implements View.On
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    et_user_phone_number.setText(String.valueOf(dataSnapshot.child("phone").getValue()));
+                    tv_phone_number.setText(String.valueOf(dataSnapshot.child("phone").getValue()));
                     pass = String.valueOf(dataSnapshot.child("password").getValue());
                 }
 
@@ -84,10 +79,9 @@ public class SingUpActivityCustomer extends AppCompatActivity implements View.On
             });
         }
 
+        tv_phone_number = findViewById(R.id.tv_phone_number);
+        tv_phone_number.setText(phoneNumber);
         et_user_password = findViewById(R.id.et_user_password);
-        et_user_phone_number = findViewById(R.id.et_user_phone_number);
-        et_user_phone_number.setText(phoneNumber);
-
         signUpbtn = findViewById(R.id.signUpbtn);
         signUpbtn.setOnClickListener(this);
 
@@ -133,7 +127,7 @@ public class SingUpActivityCustomer extends AppCompatActivity implements View.On
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    et_user_phone_number.setText(String.valueOf(dataSnapshot.child("phone").getValue()));
+                    tv_phone_number.setText(String.valueOf(dataSnapshot.child("phone").getValue()));
                     pass = String.valueOf(dataSnapshot.child("password").getValue());
                     if (pass.equals("password//password//password")){
                         databaseReference.child(parentName).child(user_uid).child("password").setValue(retype_password);
