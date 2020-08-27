@@ -2,6 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('F:\\Programming WorkPlace\\programming src\\mobileBaseWorkplaceSourceCode\\AndroidSourceCode\\banglaKingsProject\\apk\\discountShopKey.jks')
+            storePassword '01536218968'
+            keyAlias 'firti'
+            keyPassword '01536218968'
+        }
+    }
+
 //    lintOptions {
 //        checkReleaseBuilds false
 //        // Or, if you prefer, you can continue to check for errors in release builds,
@@ -21,6 +30,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
