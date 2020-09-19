@@ -20,12 +20,9 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,10 +44,10 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import alamin.game.discountappofshopers.PreferenceData;
 import alamin.game.discountappofshopers.R;
 import alamin.game.discountappofshopers.admin.DashboardActivity;
-import alamin.game.discountappofshopers.customers.SingUpActivityCustomer;
+import alamin.game.discountappofshopers.customers.SingInActivityCustomer;
 import alamin.game.discountappofshopers.model.RegistrationModelCustomer;
 import alamin.game.discountappofshopers.model.RegistrationModelShopper;
-import alamin.game.discountappofshopers.shoppers.SingUpActivityShopper;
+import alamin.game.discountappofshopers.shoppers.SingInActivityShopper;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int PERMISSION_ID = 44;
@@ -136,8 +133,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void movedNextActivity(Class selectedActivity, String selectItem, String uid) {
         Intent intent = new Intent(LoginActivity.this, selectedActivity);
-        intent.putExtra("phone_number", phoneNumber);
         intent.putExtra("SelectFromLoginActivity", selectItem);
+        intent.putExtra("phone_number", phoneNumber);
         intent.putExtra("uid", uid);
         intent.putExtra("myLocationLat", latTextView);
         intent.putExtra("myLocationLong", lonTextView);
@@ -192,8 +189,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             RegistrationModelCustomer customer = dataSnapshot1.getValue(RegistrationModelCustomer.class);
                             if (phone.equals(customer.getPhone())) {
+
                                 Log.d("TAG", "\nLogin Successfully to ID: " + dataSnapshot1.getRef());
-                                movedNextActivity(SingUpActivityCustomer.class, phone, customer.getFb_id().toString());
+                                movedNextActivity(SingInActivityCustomer.class, phone, customer.getFb_id().toString());
                                 Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                                 //   progressDialog.dismiss();
                                 return;
@@ -211,9 +209,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
                             if (phone.equals(shopper.getShopper_phone())) {
-                                Log.d("TAG", "Login Successfully to ID: " + shopper.getFb_id());
-                                //progressDialog.dismiss();
-                                movedNextActivity(SingUpActivityShopper.class, phone, shopper.getFb_id().toString());
+                                Log.d("TAG", "Login Successfully to ID: " + shopper.getFb_id()+ " phone: "+phone);
+                                phoneNumber = phone;
+                                movedNextActivity(SingInActivityShopper.class, "shopper", shopper.getFb_id().toString());
+                                progressDialog.dismiss();
                                 return;
                             }
                         }

@@ -4,11 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -19,17 +18,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import alamin.game.discountappofshopers.PreferenceData;
 import alamin.game.discountappofshopers.R;
 
 
-public class SingUpActivityShopper extends AppCompatActivity implements View.OnClickListener {
+public class SingInActivityShopper extends AppCompatActivity implements View.OnClickListener {
     private DatabaseReference databaseReference;
     private String user_uid;
     private EditText et_user_password_shopper;
@@ -49,7 +45,7 @@ public class SingUpActivityShopper extends AppCompatActivity implements View.OnC
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        this.preferenceData = new PreferenceData(SingUpActivityShopper.this);
+        this.preferenceData = new PreferenceData(SingInActivityShopper.this);
 
         et_user_password_shopper = findViewById(R.id.et_user_password_shopper);
         phone_number = findViewById(R.id.phone_number);
@@ -77,10 +73,11 @@ public class SingUpActivityShopper extends AppCompatActivity implements View.OnC
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null){
-            chooser_value = bundle.getString("selectFromOTPActivity");
+            chooser_value = bundle.getString("SelectFromLoginActivity");
             user_uid = bundle.getString("uid");
             preferenceData.setValue("CurrentUser_Uid",user_uid);
             phoneNumber = bundle.getString("phone_number");
+            Log.d("TAG", "onCreate: phone number: "+phoneNumber);
 
             phone_number.setText(phoneNumber);
         }
@@ -157,14 +154,14 @@ public class SingUpActivityShopper extends AppCompatActivity implements View.OnC
              public void onComplete(@NonNull Task<AuthResult> task) {
                  if (task.isSuccessful()){
                      movedNextActivity(ShopperHomeActivity.class);
-                     Toast.makeText(SingUpActivityShopper.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(SingInActivityShopper.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                  }
              }
          })
          .addOnFailureListener(new OnFailureListener() {
              @Override
              public void onFailure(@NonNull Exception e) {
-                 Toast.makeText(SingUpActivityShopper.this, "Error Occurred"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                 Toast.makeText(SingInActivityShopper.this, "Error Occurred"+e.getMessage(), Toast.LENGTH_SHORT).show();
              }
          })    ;    
     }

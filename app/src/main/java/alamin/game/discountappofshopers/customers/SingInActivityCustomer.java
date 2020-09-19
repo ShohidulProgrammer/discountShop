@@ -29,11 +29,11 @@ import com.google.firebase.database.ValueEventListener;
 import alamin.game.discountappofshopers.PreferenceData;
 import alamin.game.discountappofshopers.R;
 
-public class SingUpActivityCustomer extends AppCompatActivity implements View.OnClickListener {
+public class SingInActivityCustomer extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout password_page;
     private TextView tv_phone_number;
     private ImageButton signUpbtn;
-    private String chooser_value;
+    private String user_type;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private String user_uid;
@@ -48,7 +48,7 @@ public class SingUpActivityCustomer extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
-        this.preferenceData = new PreferenceData(SingUpActivityCustomer.this);
+        this.preferenceData = new PreferenceData(SingInActivityCustomer.this);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         password_page = findViewById(R.id.password_page);
@@ -56,7 +56,7 @@ public class SingUpActivityCustomer extends AppCompatActivity implements View.On
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null){
-            chooser_value = bundle.getString("selectFromOTPActivity");
+            user_type = bundle.getString("SelectFromLoginActivity");
             phoneNumber = bundle.getString("phone_number");
             user_uid = bundle.getString("uid");
             preferenceData.setValue("CurrentUser_Uid",user_uid);

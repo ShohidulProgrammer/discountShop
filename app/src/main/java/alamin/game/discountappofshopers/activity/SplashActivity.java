@@ -31,7 +31,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,13 +39,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import alamin.game.discountappofshopers.PreferenceData;
 import alamin.game.discountappofshopers.R;
-import alamin.game.discountappofshopers.admin.DashboardActivity;
 import alamin.game.discountappofshopers.appUtils.AppUtils;
 import alamin.game.discountappofshopers.customers.CustomerHomeActivity;
-import alamin.game.discountappofshopers.customers.SingUpActivityCustomer;
 import alamin.game.discountappofshopers.auth.UserSelectActivity;
 import alamin.game.discountappofshopers.shoppers.ShopperHomeActivity;
-import alamin.game.discountappofshopers.shoppers.SingUpActivityShopper;
 
 public class SplashActivity extends AppCompatActivity {
     private static final int PERMISSION_ID = 44;

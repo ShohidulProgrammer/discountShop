@@ -4,7 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     signingConfigs {
         release {
-            storeFile file('F:\\Programming WorkPlace\\programming src\\mobileBaseWorkplaceSourceCode\\AndroidSourceCode\\banglaKingsProject\\apk\\discountShopKey.jks')
+            storeFile file('F:\\ProgrammingWorkPlace\\src\\mobileBaseWorkplaceSourceCode\\AndroidSourceCode\\banglaKingsProject\\apk\\release\\app-release.apk')
             storePassword '01536218968'
             keyAlias 'firti'
             keyPassword '01536218968'

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:id="@+id/password_page"
     android:background="@drawable/login"
-    tools:context=".customers.SingUpActivityCustomer">
+    tools:context=".customers.SingInActivityCustomer">
 
 
     <ImageView

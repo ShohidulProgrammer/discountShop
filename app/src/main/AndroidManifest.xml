@@ -28,7 +28,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".admin.NotificationActivity"></activity>
+        <activity android:name=".auth.EmailSignUpActivity"></activity>
+        <activity android:name=".admin.NotificationActivity" />
         <activity android:name=".admin.MerchantCreateActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
@@ -77,7 +78,7 @@
         <activity android:name=".admin.CustomerListActivity" />
         <activity android:name=".admin.ShopperListActivity" />
         <activity android:name=".admin.DashboardActivity" />
-        <activity android:name=".shoppers.SingUpActivityShopper" />
+        <activity android:name=".shoppers.SingInActivityShopper" />
         <activity android:name=".customers.ProfileActivityCustomerEditable" />
         <activity
             android:name=".customers.CustomerHomeActivity"
@@ -89,7 +90,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".auth.UserSelectActivity" />
         <activity android:name=".auth.OTPActivity" />
-        <activity android:name=".customers.SingUpActivityCustomer" />
+        <activity android:name=".customers.SingInActivityCustomer" />
         <activity android:name=".auth.LoginActivity" />
         <activity
             android:name=".activity.SplashActivity"

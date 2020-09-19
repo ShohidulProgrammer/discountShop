@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -72,18 +73,19 @@ public class ShopperHomeActivity extends AppCompatActivity implements
     private AppBarConfiguration mAppBarConfiguration;
     private FirebaseAuth firebaseAuth;
     private PreferenceData preferenceData;
-    private Double myLocationLat,myLocationLong;
+    private Double myLocationLat, myLocationLong;
     private int PERMISSION_ID = 44;
     private FusedLocationProviderClient mFusedLocationClient;
     private RegistrationModelShopper registrationModelShopper;
 
-    private DatabaseReference databaseReference,shopRef;
-    String name ;
+    private DatabaseReference databaseReference, shopRef;
+    String name;
     String location;
     String pic_url;
     private String user_uid;
-    private TextView tv_user_name_nav_header,tv_user_phone__nav_header;
+    private TextView tv_user_name_nav_header, tv_user_phone__nav_header;
     private ImageView nav_profile_picture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,25 +95,24 @@ public class ShopperHomeActivity extends AppCompatActivity implements
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if(bundle != null){
-            //user_uid = bundle.getString("uid");
+        if (bundle != null) {
+            user_uid = bundle.getString("uid");
         }
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
 
         setSupportActionBar(toolbar);
-        if (firebaseAuth.getCurrentUser() != null){
+        if (firebaseAuth.getCurrentUser() != null) {
             user_uid = firebaseAuth.getCurrentUser().getUid();
-            preferenceData.setValue("loginStatusShopper",user_uid);
+            preferenceData.setValue("loginStatusShopper", user_uid);
         }
 
-        preferenceData.setValue("CurrentUser_Uid",user_uid);
+        preferenceData.setValue("CurrentUser_Uid", user_uid);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-              this,drawer,toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         );
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -128,9 +129,14 @@ public class ShopperHomeActivity extends AppCompatActivity implements
         shopRef.child(user_uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                tv_user_name_nav_header.setText(dataSnapshot.child("shop_name").getValue().toString());
-                tv_user_phone__nav_header.setText(dataSnapshot.child("shopper_phone").getValue().toString());
-                Picasso.with(ShopperHomeActivity.this).load(dataSnapshot.child("shop_pic_url").getValue().toString()).placeholder(R.drawable.defaultpic).into(nav_profile_picture);
+                try {
+                    tv_user_name_nav_header.setText(dataSnapshot.child("shop_name").getValue().toString());
+                    tv_user_phone__nav_header.setText(dataSnapshot.child("shopper_phone").getValue().toString());
+                    Picasso.with(ShopperHomeActivity.this).load(dataSnapshot.child("shop_pic_url").getValue().toString()).placeholder(R.drawable.defaultpic).into(nav_profile_picture);
+
+                } catch (Exception e) {
+                    Log.d("shopperhome", "onDataChange: error:  " + e);
+                }
             }
 
             @Override
@@ -163,10 +169,11 @@ public class ShopperHomeActivity extends AppCompatActivity implements
         displaySelectedScreen(id);
         return true;
     }
+
     private void displaySelectedScreen(int id) {
         Fragment fragment = null;
         Bundle bundle = null;
-        switch (id){
+        switch (id) {
             case R.id.nav_home_shopper:
                 fragment = new HomeFragmentShopper();
                 break;
@@ -194,15 +201,15 @@ public class ShopperHomeActivity extends AppCompatActivity implements
             case R.id.nav_logout_shopper:
                 firebaseAuth.signOut();
                 Intent intent = new Intent(ShopperHomeActivity.this, SplashActivity.class);
-                preferenceData.setValue("CurrentUser_Uid","");
+                preferenceData.setValue("CurrentUser_Uid", "");
                 startActivity(intent);
                 finish();
                 break;
         }
-        if (fragment != null){
+        if (fragment != null) {
 
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.content_frame_shopper,fragment);
+            fragmentTransaction.replace(R.id.content_frame_shopper, fragment);
             fragmentTransaction.commit();
         }
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -210,20 +217,23 @@ public class ShopperHomeActivity extends AppCompatActivity implements
     }
 
     private void toast(String toastMsg) {
-        Toast.makeText(this, ""+toastMsg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + toastMsg, Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void onClick(View view) {
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.shopper_home, menu);
         return true;
     }
+
     @SuppressLint("MissingPermission")
-    private void getLastLocation(){
+    private void getLastLocation() {
         if (checkPermissions()) {
             if (isLocationEnabled()) {
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(
@@ -236,8 +246,8 @@ public class ShopperHomeActivity extends AppCompatActivity implements
                                 } else {
                                     myLocationLat = location.getLatitude();
                                     myLocationLong = location.getLongitude();
-                                    google_maps_data_save(myLocationLat,myLocationLong);
-                                   // Toast.makeText(ShopperHomeActivity.this, "latitude : "+myLocationLat+"\n"+"longitude : "+myLocationLong, Toast.LENGTH_SHORT).show();
+                                    google_maps_data_save(myLocationLat, myLocationLong);
+                                    // Toast.makeText(ShopperHomeActivity.this, "latitude : "+myLocationLat+"\n"+"longitude : "+myLocationLong, Toast.LENGTH_SHORT).show();
                                     //todo::we was use this textview to show latitude and longitude it call from this fragment layout bt now i removed it if we need it we will use again to declar textview in layout
 
 //                                    latTextView.setText(location.getLatitude()+"");
@@ -255,8 +265,9 @@ public class ShopperHomeActivity extends AppCompatActivity implements
             requestPermissions();
         }
     }
+
     @SuppressLint("MissingPermission")
-    private void requestNewLocationData(){
+    private void requestNewLocationData() {
 
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -280,7 +291,7 @@ public class ShopperHomeActivity extends AppCompatActivity implements
             myLocationLat = mLastLocation.getLatitude();
             myLocationLong = mLastLocation.getLongitude();
 
-            Toast.makeText(ShopperHomeActivity.this, "mLocationCallback latitude : "+myLocationLat+"\n"+"mLocationCallback longitude : "+myLocationLong, Toast.LENGTH_LONG).show();
+            Toast.makeText(ShopperHomeActivity.this, "mLocationCallback latitude : " + myLocationLat + "\n" + "mLocationCallback longitude : " + myLocationLong, Toast.LENGTH_LONG).show();
 
             //todo::we was use this textview to show latitude and longitude it call from this fragment layout bt now i removed it if we need it we will use again to declar textview in layout
 //            latTextView.setText(mLastLocation.getLatitude()+"");
@@ -295,6 +306,7 @@ public class ShopperHomeActivity extends AppCompatActivity implements
         }
         return false;
     }
+
     private void requestPermissions() {
         ActivityCompat.requestPermissions(
                 ShopperHomeActivity.this,
@@ -302,12 +314,14 @@ public class ShopperHomeActivity extends AppCompatActivity implements
                 PERMISSION_ID
         );
     }
+
     private boolean isLocationEnabled() {
         LocationManager locationManager = (LocationManager) ShopperHomeActivity.this.getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
                 LocationManager.NETWORK_PROVIDER
         );
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -317,14 +331,16 @@ public class ShopperHomeActivity extends AppCompatActivity implements
             }
         }
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         if (checkPermissions()) {
             getLastLocation();
         }
 
     }
+
     private void OpenDialog() {
         final Dialog dialog = new Dialog(ShopperHomeActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -356,24 +372,29 @@ public class ShopperHomeActivity extends AppCompatActivity implements
         dialog.getWindow().setAttributes(lp);
         dialog.show();
     }
+
     private void google_maps_data_save(final double latitude, final double longitude) {
-        final boolean status=true;
+        final boolean status = true;
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         databaseReference.child("shopper").child(user_uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                RegistrationModelShopper registrationModelShopper = dataSnapshot.getValue(RegistrationModelShopper.class);
-                name = registrationModelShopper.getShop_name();
-                location = registrationModelShopper.getShop_location_manually();
-                pic_url = registrationModelShopper.getShop_pic_url();
-                databaseReference = FirebaseDatabase.getInstance().getReference("location details");
-                LocationModel locationModel = new LocationModel(latitude,longitude,name,location,pic_url,user_uid,status);
-                if (! isLocationFound()) {
-                    databaseReference.child(user_uid).setValue(locationModel);
-                }else if (isLocationFound()){
-                    Toast.makeText(ShopperHomeActivity.this, "Location is already taken", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(ShopperHomeActivity.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+                try {
+                    RegistrationModelShopper registrationModelShopper = dataSnapshot.getValue(RegistrationModelShopper.class);
+                    name = registrationModelShopper.getShop_name();
+                    location = registrationModelShopper.getShop_location_manually();
+                    pic_url = registrationModelShopper.getShop_pic_url();
+                    databaseReference = FirebaseDatabase.getInstance().getReference("location details");
+                    LocationModel locationModel = new LocationModel(latitude, longitude, name, location, pic_url, user_uid, status);
+                    if (!isLocationFound()) {
+                        databaseReference.child(user_uid).setValue(locationModel);
+                    } else if (isLocationFound()) {
+                        Toast.makeText(ShopperHomeActivity.this, "Location is already taken", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ShopperHomeActivity.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Log.d("TAG", "onDataChange: google_maps_data_save"+e);
                 }
             }
 
@@ -384,23 +405,25 @@ public class ShopperHomeActivity extends AppCompatActivity implements
         });
 
     }
-    private Boolean isLocationFound(){
+
+    private Boolean isLocationFound() {
         final String uid = user_uid;
         final List<String> locationModelList = new ArrayList<>();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("location details");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     LocationModel locationModel = dataSnapshot1.getValue(LocationModel.class);
                     if (locationModel != null) {
                         if (uid.equals(locationModel.getUser_uid())) {
 
-                           return;
+                            return;
                         }
                     }
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

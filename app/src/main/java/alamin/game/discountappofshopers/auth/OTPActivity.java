@@ -1,6 +1,5 @@
 package alamin.game.discountappofshopers.auth;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,13 +16,8 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
@@ -33,20 +27,15 @@ import com.mukesh.OtpView;
 import java.util.concurrent.TimeUnit;
 
 import alamin.game.discountappofshopers.R;
-import alamin.game.discountappofshopers.customers.SingUpActivityCustomer;
-import alamin.game.discountappofshopers.model.LocationModel;
-import alamin.game.discountappofshopers.model.RegistrationModelCustomer;
-import alamin.game.discountappofshopers.model.RegistrationModelShopper;
-import alamin.game.discountappofshopers.shoppers.SingUpActivityShopper;
 
 public class OTPActivity extends AppCompatActivity {
     private static final int PERMISSION_ID = 44;
     private static final String TAG = "Tag";
     private Button btn_otp_code;
-    private String chooser_value;
+    private String userType;
     private String phoneNumber;
     private String name = "";
-    private String password;
+    private String password = "";
 
     private String fb_id;
     private FirebaseAuth auth;
@@ -130,9 +119,9 @@ public class OTPActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
-            chooser_value = bundle.getString("SelectFromLoginActivity");
+            userType = bundle.getString("SelectFromLoginActivity");
             phoneNumber = bundle.getString("phone_number");
-            Current_Uid = bundle.getString("uid");
+//            Current_Uid = bundle.getString("uid");
             latitude = bundle.getDouble("myLocationLat");
             longitude = bundle.getDouble("myLocationLong");
             Log.d("TAG", "\n\n\ngetIntentData: " + bundle.toString() + "\nPhone Num: " + phoneNumber);
@@ -229,66 +218,71 @@ public class OTPActivity extends AppCompatActivity {
     }
 
     private void verifyOtpVerificationCode(String code) {
-       try {
-           PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, code);
-           Log.d(TAG, "verifyOtpVerificationCode: "+code);
-           if (credential != null) {
-               Log.d(TAG, "verifyOtpVerificationCode credential: "+credential);
-               signInWithPhoneAuthCredential(credential);
-           }
-       }catch (Exception e){
-           Log.d(TAG, "verifyOtpVerificationCode error: "+e.getMessage());
-       }
-    }
-
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        auth.signInWithCredential(credential).addOnCompleteListener(OTPActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    fb_id = auth.getCurrentUser().getUid();
-
-                    if (chooser_value.equals("customer")) {
-                        RegistrationModelCustomer customer = new RegistrationModelCustomer(fb_id, phoneNumber, email, password, name, gender, date_of_birth, profile_pic_url, latitude, longitude, status, bksh, bksh_number, rocket, rocket_number, mCash, mCashNumber, myCash, myCashNumber, uCash, uCashNumber, nogod, nogod_number, sureCash, sureCashNumber);
-                        databaseReference.child("customer").child(fb_id).setValue(customer);
-                        gotoNextActivity(SingUpActivityCustomer.class, phoneNumber);
-
-                    } else if (chooser_value.equals("shopper")) {
-                        RegistrationModelShopper shopper = new RegistrationModelShopper(fb_id, name, phoneNumber, email, password, date_of_birth, profile_pic_url, location, google_location, discount, food_item, latitude, longitude);
-                        databaseReference.child("shopper").child(fb_id).setValue(shopper);
-                        Boolean status = false;
-                        String name = "";
-                        String location = "";
-                        String picture_url = "";
-                        String user_uid;
-                        databaseReference = FirebaseDatabase.getInstance().getReference("location details");
-                        LocationModel locationModel = new LocationModel(latitude, longitude, name, location, profile_pic_url, fb_id, status);
-                        databaseReference.child(fb_id).setValue(locationModel);
-                        gotoNextActivity(SingUpActivityShopper.class, phoneNumber);
-                    }
-                } else {
-                    String message = "Something is wrong, we will fix it soon...";
-                    if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                        message = "Invalid code entered...";
-                    }
-                    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
-                    snackbar.setAction("Dismiss", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
-                    snackbar.show();
-                }
+        try {
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, code);
+            Log.d(TAG, "verifyOtpVerificationCode: " + code);
+            if (credential != null) {
+                Log.d(TAG, "verifyOtpVerificationCode credential: " + credential);
+                gotoNextActivity(EmailSignUpActivity.class, phoneNumber, userType);
+//               signInWithPhoneAuthCredential(credential);
             }
-        });
+        } catch (Exception e) {
+            Log.d(TAG, "verifyOtpVerificationCode error: " + e.getMessage());
+        }
     }
 
-    public void gotoNextActivity(Class selected_class, String phone) {
+//    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+//        auth.signInWithCredential(credential).addOnCompleteListener(OTPActivity.this, new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if (task.isSuccessful()) {
+//                    fb_id = auth.getCurrentUser().getUid();
+//
+//                    if (userType.equals("customer")) {
+//                        RegistrationModelCustomer customer = new RegistrationModelCustomer(fb_id, phoneNumber, email, password, name, gender, date_of_birth, profile_pic_url, latitude, longitude, status, bksh, bksh_number, rocket, rocket_number, mCash, mCashNumber, myCash, myCashNumber, uCash, uCashNumber, nogod, nogod_number, sureCash, sureCashNumber);
+//                        databaseReference.child("customer").child(fb_id).setValue(customer);
+//                        gotoNextActivity(SingUpActivityCustomer.class, phoneNumber, userType);
+//
+//                    } else if (userType.equals("shopper")) {
+//                        RegistrationModelShopper shopper = new RegistrationModelShopper(fb_id, name, phoneNumber, email, password, date_of_birth, profile_pic_url, location, google_location, discount, food_item, latitude, longitude);
+//                        databaseReference.child("shopper").child(fb_id).setValue(shopper);
+//                        Boolean status = false;
+//                        String name = "";
+//                        String location = "";
+//                        String picture_url = "";
+//                        String user_uid;
+//                        databaseReference = FirebaseDatabase.getInstance().getReference("location details");
+//                        LocationModel locationModel = new LocationModel(latitude, longitude, name, location, profile_pic_url, fb_id, status);
+//                        databaseReference.child(fb_id).setValue(locationModel);
+//                        gotoNextActivity(SingUpActivityShopper.class, phoneNumber, userType);
+//                    }
+//                } else {
+//                    String message = "Something is wrong, we will fix it soon...";
+//                    if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+//                        message = "Invalid code entered...";
+//                    }
+//                    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
+//                    snackbar.setAction("Dismiss", new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//
+//                        }
+//                    });
+//                    snackbar.show();
+//                }
+//            }
+//        });
+//    }
+
+    public void gotoNextActivity(Class selected_class, String phone, String userType) {
         Intent intent = new Intent(OTPActivity.this, selected_class);
-        intent.putExtra("selectFromOTPActivity", "shopper");
         intent.putExtra("phone_number", phone);
-        intent.putExtra("uid", fb_id);
+        intent.putExtra("selectFromOTPActivity", userType);
+        intent.putExtra("uid", Current_Uid);
+        intent.putExtra("myLocationLat", latitude);
+        intent.putExtra("myLocationLong", longitude);
+//        intent.putExtra("selectFromOTPActivity", "shopper");
+//        intent.putExtra("uid", fb_id);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         pageTransectionAnimation();
         startActivity(intent);
@@ -299,19 +293,19 @@ public class OTPActivity extends AppCompatActivity {
         btn_otp_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               try {
-                   if (otpView.getText().toString().trim().equals(smsCode)) {
-                       String otp = otpView.getText().toString().trim();
-                       Log.d(TAG, "onClick: otp: "+otp);
-                       verifyOtpVerificationCode(otp);
-                   } else {
-                       Log.d(TAG, "onClick otp Code is invalid: ");
-                       Toast.makeText(OTPActivity.this, "Code is invalid", Toast.LENGTH_SHORT).show();
-                       return;
-                   }
-               }catch (Exception e){
-                   Log.d(TAG, "otp verify onClick error: "+e.getMessage());
-               }
+                try {
+                    if (otpView.getText().toString().trim().equals(smsCode)) {
+                        String otp = otpView.getText().toString().trim();
+                        Log.d(TAG, "onClick: otp: " + otp);
+                        verifyOtpVerificationCode(otp);
+                    } else {
+                        Log.d(TAG, "onClick otp Code is invalid: ");
+                        Toast.makeText(OTPActivity.this, "Code is invalid", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (Exception e) {
+                    Log.d(TAG, "otp verify onClick error: " + e.getMessage());
+                }
             }
         });
     }
@@ -334,103 +328,6 @@ public class OTPActivity extends AppCompatActivity {
 //    }
 
 
-//    private void firebaseEmailAuth() {
-//
-////        et_name = findViewById(R.id.et_name);
-//        tv_phone_number = findViewById(R.id.phone_number);
-////        et_password = findViewById(R.id.password);
-////        et_re_type_password = findViewById(R.id.re_type_password);
-////        et_otp = findViewById(R.id.otp);
-////        btn_continue = findViewById(R.id.btn_continue);
-////        btn_resend_otp = findViewById(R.id.btn_resend_otp);
-//
-//        shopperRef = FirebaseDatabase.getInstance().getReference().child("Users").child("shopper");
-//        customerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("customer");
-//        YoYo.with(Techniques.FadeIn)
-//                .duration(2000)
-//                .playOn(findViewById(R.id.otp_page));
-//        Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        firebaseAuth = FirebaseAuth.getInstance();
-//
-//        if (bundle != null) {
-//            chooser_value = bundle.getString("SelectFromLoginActivity");
-//            phoneNumber = bundle.getString("phone_number");
-//            Current_Uid = bundle.getString("uid");
-//            tv_phone_number.setText(phoneNumber);
-//
-//
-//            latitude = bundle.getDouble("myLocationLat");
-//            longitude = bundle.getDouble("myLocationLong");
-//        }
-//
-//        btn_continue.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final String phoneNumber = tv_phone_number.getText().toString().trim();
-//                final String name = et_name.getText().toString().trim();
-//                String password = et_password.getText().toString().trim();
-//                final String confirmPass = et_re_type_password.getText().toString().trim();
-//                final String otp = et_re_type_password.getText().toString().trim();
-//
-//                if (TextUtils.isEmpty(password) && TextUtils.isEmpty(confirmPass)) {
-//                    YoYo.with(Techniques.Tada)
-//                            .duration(700)
-//                            .playOn(findViewById(R.id.pass_container));
-//                    return;
-//
-////                                                } else if (TextUtils.isEmpty(name)) {
-////                                                    YoYo.with(Techniques.Tada)
-////                                                            .duration(700)
-////                                                            .playOn(findViewById(R.id.et_name));
-////                                                    return;
-//
-//                } else if (!password.matches(confirmPass)) {
-//
-//                    YoYo.with(Techniques.Tada)
-//                            .duration(700)
-//                            .playOn(findViewById(R.id.pass_container));
-//                    return;
-//                } else {
-//                    final String phonemail = String.valueOf(phoneNumber + "@gmail.com");
-//                    firebaseAuth.createUserWithEmailAndPassword(phonemail, confirmPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()) {
-//                                String fb_id = firebaseAuth.getCurrentUser().getUid();
-//                                if (chooser_value.equals("shopper")) {
-//                                    RegistrationModelShopper shopper = new RegistrationModelShopper(fb_id, name, phoneNumber, phonemail, confirmPass, date_of_birth, profile_pic_url, location, google_location, discount, food_item, latitude, longitude);
-//                                    shopperRef.child(fb_id).setValue(shopper);
-//                                    selectHomeActivity(ShopperHomeActivity.class);
-//                                    et_name.setText("");
-//                                    et_password.setText("");
-//                                    et_re_type_password.setText("");
-//                                    Toast.makeText(OTPActivity.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
-//
-//                                } else if (chooser_value.equals("customer")) {
-//                                    RegistrationModelCustomer customer = new RegistrationModelCustomer(fb_id, phoneNumber, email, confirmPass, name, date_of_birth, profile_pic_url, profile_pic_url, latitude, longitude, status, bksh, bksh_number, rocket, rocket_number, mCash, mCashNumber, myCash, myCashNumber, uCash, uCashNumber, nogod, nogod_number, sureCash, sureCashNumber);
-//                                    customerRef.child(fb_id).setValue(customer);
-//                                    selectHomeActivity(CustomerHomeActivity.class);
-//                                    et_name.setText("");
-//                                    et_password.setText("");
-//                                    et_re_type_password.setText("");
-//                                    Toast.makeText(OTPActivity.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
-//
-//                                }
-//                            } else {
-//                                Toast.makeText(OTPActivity.this, "Error Occurred : " + task.getException(), Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Toast.makeText(OTPActivity.this, "Error Occurred : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//    }
 }
 
 
