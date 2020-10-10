@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -77,7 +78,7 @@ public class CustomerHomeActivity extends AppCompatActivity implements
         refresh = new Runnable() {
             public void run() {
                 // Do something
-                handler.postDelayed(refresh, 5000);
+                handler.postDelayed(refresh, 500);
                 Toast.makeText(CustomerHomeActivity.this, "auto loading called", Toast.LENGTH_SHORT).show();
             }
         };
@@ -109,10 +110,15 @@ public class CustomerHomeActivity extends AppCompatActivity implements
         customerRef.child(preferenceData.getStringValue("CurrentUser_Uid")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                tv_user_name_nav_header.setText(dataSnapshot.child("name").getValue().toString());
-                tv_user_phone__nav_header.setText(dataSnapshot.child("phone").getValue().toString());
-                Picasso.with(CustomerHomeActivity.this).load(dataSnapshot.child("profile_pic_url").getValue().toString()).placeholder(R.drawable.defaultpic).into(nav_profile_picture);
-            }
+                try {
+                    tv_user_name_nav_header.setText(dataSnapshot.child("name").getValue().toString());
+                    tv_user_phone__nav_header.setText(dataSnapshot.child("phone").getValue().toString());
+                    Picasso.with(CustomerHomeActivity.this).load(dataSnapshot.child("profile_pic_url").getValue().toString()).placeholder(R.drawable.defaultpic).into(nav_profile_picture);
+
+                }catch (Exception e){
+                    Log.d("TAG", "CustomerHomeActivity onDataChange: "+e);
+                }
+                 }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

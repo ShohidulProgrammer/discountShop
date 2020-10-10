@@ -71,23 +71,24 @@ public class HistoryFragmentShopper extends Fragment {
                             }
                         }
                     }
+
+                    if (customerList.size() > 0) {
+                        nodatafound.setVisibility(View.GONE);
+                        rv_customer_paresis_history.setVisibility(View.VISIBLE);
+                        statusAdapter = new CustomerWithdrawalStatusAdapter(getActivity(), customerList);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                        rv_customer_paresis_history.setLayoutManager(layoutManager);
+                        rv_customer_paresis_history.setItemAnimator(new DefaultItemAnimator());
+                        rv_customer_paresis_history.setAdapter(statusAdapter);
+                        progressDialog.dismiss();
+                    } else {
+                        rv_customer_paresis_history.setVisibility(View.GONE);
+                        nodatafound.setVisibility(View.VISIBLE);
+                        Toast.makeText(getActivity(), "No History found", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
                 } catch (Exception e) {
                     Log.d("TAG", "onDataChange: " + e);
-                }
-                if (customerList.size() > 0) {
-                    nodatafound.setVisibility(View.GONE);
-                    rv_customer_paresis_history.setVisibility(View.VISIBLE);
-                    statusAdapter = new CustomerWithdrawalStatusAdapter(getActivity(), customerList);
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                    rv_customer_paresis_history.setLayoutManager(layoutManager);
-                    rv_customer_paresis_history.setItemAnimator(new DefaultItemAnimator());
-                    rv_customer_paresis_history.setAdapter(statusAdapter);
-                    progressDialog.dismiss();
-                } else {
-                    rv_customer_paresis_history.setVisibility(View.GONE);
-                    nodatafound.setVisibility(View.VISIBLE);
-                    Toast.makeText(getActivity(), "No History found", Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
                 }
 
             }

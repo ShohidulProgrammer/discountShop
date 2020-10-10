@@ -75,8 +75,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ib_loginPage = findViewById(R.id.ib_loginPage);
         ib_loginPage.setOnClickListener(this);
         et_user_phone = findViewById(R.id.et_user_phone);
-        // Todo! remove setText
-        et_user_phone.setText("01944700465");
+//         //Todo! remove setText
+//        et_user_phone.setText("01944700465");
         user_panel = findViewById(R.id.user_panel);
         databaseReference = FirebaseDatabase.getInstance().getReference("Admin");
         userRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -108,6 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onDestroy();
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.cancel();
+
         }
     }
 
@@ -140,8 +141,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         intent.putExtra("uid", uid);
         intent.putExtra("myLocationLat", latTextView);
         intent.putExtra("myLocationLong", lonTextView);
-        startActivity(intent);
         finish();
+        startActivity(intent);
     }
 
     private void toast(String toast_text) {
@@ -211,7 +212,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             RegistrationModelShopper shopper = dataSnapshot1.getValue(RegistrationModelShopper.class);
                             if (phone.equals(shopper.getShopper_phone())) {
-                                Log.d("TAG", "Login Successfully to ID: " + shopper.getFb_id()+ " phone: "+phone);
+                                Log.d("TAG", "Login Successfully to ID: " + shopper.getFb_id() + " phone: " + phone);
                                 phoneNumber = phone;
                                 movedNextActivity(SingInActivityShopper.class, "shopper", shopper.getFb_id().toString());
                                 progressDialog.dismiss();

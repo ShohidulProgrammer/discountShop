@@ -240,8 +240,8 @@ public class EmailSignUpActivity extends AppCompatActivity {
              Log.d(TAG, "selectHomeActivity: yoyo exception:  "+e);
          }
 
-        startActivity(intent);
         finish();
+        startActivity(intent);
     }
 
 }
