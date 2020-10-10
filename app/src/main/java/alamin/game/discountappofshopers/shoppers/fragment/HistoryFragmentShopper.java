@@ -37,7 +37,7 @@ public class HistoryFragmentShopper extends Fragment {
     private FirebaseAuth firebaseAuth;
     private String uid;
     private DatabaseReference databaseReference;
-    private List<ReceiptModelCustomer> customerList  = new ArrayList<>();
+    private List<ReceiptModelCustomer> customerList = new ArrayList<>();
     private CustomerWithdrawalStatusAdapter statusAdapter;
     private ProgressDialog progressDialog;
     private PreferenceData preferenceData;
@@ -61,30 +61,35 @@ public class HistoryFragmentShopper extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    ReceiptModelCustomer customer = dataSnapshot1.getValue(ReceiptModelCustomer.class);
-                    if (customer != null){
-                        Log.d(" shop uid",customer.getShop_uid());
-                        if (uid.equals(customer.getShop_uid())){
-                            customerList.add(customer);
+                try {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        ReceiptModelCustomer customer = dataSnapshot1.getValue(ReceiptModelCustomer.class);
+                        if (customer != null) {
+                            Log.d(" shop uid", customer.getShop_uid());
+                            if (uid.equals(customer.getShop_uid())) {
+                                customerList.add(customer);
+                            }
                         }
                     }
+                } catch (Exception e) {
+                    Log.d("TAG", "onDataChange: " + e);
                 }
-                if (customerList.size() > 0){
+                if (customerList.size() > 0) {
                     nodatafound.setVisibility(View.GONE);
                     rv_customer_paresis_history.setVisibility(View.VISIBLE);
-                    statusAdapter = new CustomerWithdrawalStatusAdapter(getActivity(),customerList);
+                    statusAdapter = new CustomerWithdrawalStatusAdapter(getActivity(), customerList);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                     rv_customer_paresis_history.setLayoutManager(layoutManager);
                     rv_customer_paresis_history.setItemAnimator(new DefaultItemAnimator());
                     rv_customer_paresis_history.setAdapter(statusAdapter);
                     progressDialog.dismiss();
-                }else {
+                } else {
                     rv_customer_paresis_history.setVisibility(View.GONE);
                     nodatafound.setVisibility(View.VISIBLE);
                     Toast.makeText(getActivity(), "No History found", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
+
             }
 
             @Override

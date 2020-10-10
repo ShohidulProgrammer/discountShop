@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -229,14 +230,20 @@ public class ProfileActivityShopperEditable extends AppCompatActivity implements
         databaseReference.child("shopper").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                RegistrationModelShopper registrationModelShopper = dataSnapshot.getValue(RegistrationModelShopper.class);
-                et_shopper_name_edit.setText(registrationModelShopper.getShop_name());
-                et_shopper_email_edit.setText(registrationModelShopper.getShopper_email());
-                tv_shopper_date_of_birth_edit.setText(registrationModelShopper.getShop_creation_date());
-                tv_shopper_location_manually.setText(registrationModelShopper.getShop_location_manually());
-                et_customer_shop_item.setText(registrationModelShopper.getFood_item());
-                Picasso.with(ProfileActivityShopperEditable.this).load(registrationModelShopper.getShop_pic_url()).placeholder(R.drawable.noimage).into(iv_profile_picture_shppper);
-            }
+                try {
+                    RegistrationModelShopper registrationModelShopper = dataSnapshot.getValue(RegistrationModelShopper.class);
+                    et_shopper_name_edit.setText(registrationModelShopper.getShop_name());
+                    et_shopper_email_edit.setText(registrationModelShopper.getShopper_email());
+                    tv_shopper_date_of_birth_edit.setText(registrationModelShopper.getShop_creation_date());
+                    tv_shopper_location_manually.setText(registrationModelShopper.getShop_location_manually());
+                    et_customer_shop_item.setText(registrationModelShopper.getFood_item());
+                    Picasso.with(ProfileActivityShopperEditable.this).load(registrationModelShopper.getShop_pic_url()).placeholder(R.drawable.noimage).into(iv_profile_picture_shppper);
+
+                }
+                catch (Exception e){
+                    Log.d("TAG", "onDataChange: "+e);
+                }
+        }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

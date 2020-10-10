@@ -2,6 +2,7 @@ package alamin.game.discountappofshopers.shoppers.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ import alamin.game.discountappofshopers.shoppers.ProfileActivityShopperEditable;
 public class ProfileFragmentShopper extends Fragment implements View.OnClickListener {
 
     private FloatingActionButton fab_shopper_profile;
-    private TextView tv_shop_profile_name,tv_shopper_profile_email,tv_shopper_profile_phone,tv_shop_profile_create_date,tv_shop_profile_location;
+    private TextView tv_shop_profile_name, tv_shopper_profile_email, tv_shopper_profile_phone, tv_shop_profile_create_date, tv_shop_profile_location;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ImageView civ_profile_pic_shopper;
@@ -59,27 +60,34 @@ public class ProfileFragmentShopper extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.fab_shopper_profile:
                 Intent intent = new Intent(getActivity(), ProfileActivityShopperEditable.class);
                 startActivity(intent);
                 break;
         }
     }
-    public void retrieveDataFromFirebase (){
+
+    public void retrieveDataFromFirebase() {
         //String uid = preferenceData.getStringValue("CurrentUser_Uid");
         String uid = firebaseAuth.getCurrentUser().getUid();
         databaseReference.child("shopper").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                RegistrationModelShopper registrationModelShopper = dataSnapshot.getValue(RegistrationModelShopper.class);
-                tv_shop_profile_name.setText(registrationModelShopper.getShop_name());
-                tv_shopper_profile_email.setText(registrationModelShopper.getShopper_email());
-                tv_shopper_profile_phone.setText(registrationModelShopper.getShopper_phone());
-                tv_shop_profile_create_date.setText(registrationModelShopper.getShop_creation_date());
-                tv_shop_profile_location.setText(registrationModelShopper.getShop_location_manually());
-                Picasso.with(getActivity()).load(registrationModelShopper.getShop_pic_url()).placeholder(R.drawable.noimage).into(civ_profile_pic_shopper);
+                try {
+                    RegistrationModelShopper registrationModelShopper = dataSnapshot.getValue(RegistrationModelShopper.class);
+                    tv_shop_profile_name.setText(registrationModelShopper.getShop_name());
+                    tv_shopper_profile_email.setText(registrationModelShopper.getShopper_email());
+                    tv_shopper_profile_phone.setText(registrationModelShopper.getShopper_phone());
+                    tv_shop_profile_create_date.setText(registrationModelShopper.getShop_creation_date());
+                    tv_shop_profile_location.setText(registrationModelShopper.getShop_location_manually());
+                    Picasso.with(getActivity()).load(registrationModelShopper.getShop_pic_url()).placeholder(R.drawable.noimage).into(civ_profile_pic_shopper);
+
+                } catch (Exception e) {
+                    Log.d("TAG", " onDataChange error:  " + e);
+                }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

@@ -184,21 +184,10 @@ public class OTPActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-                try {
-                    smsCode = phoneAuthCredential.getSmsCode();
-                    if (smsCode != null) {
-                        Log.i(TAG, "onVerificationCompleted: CODE " + smsCode);
-                        Log.i(TAG, "onVerificationCompleted: PROVIDER " + phoneAuthCredential.getProvider());
 
-                        et_otp.setText(smsCode);
-                        otpView.setText(smsCode);
-                        verifyOtpVerificationCode(smsCode);
-                    }
-                } catch (Exception e) {
-                    Log.i(TAG, "onVerificationCompleted failed to get CODE and error: " + e.getMessage());
-                }
                 Log.d(TAG, "onVerificationCompleted: ");
                 Toast.makeText(OTPActivity.this, "verification completed", Toast.LENGTH_SHORT).show();
+                gotoNextActivity(EmailSignUpActivity.class, phoneNumber, userType);
             }
 
             @Override
@@ -213,6 +202,18 @@ public class OTPActivity extends AppCompatActivity {
                 verificationCode = s;
                 Toast.makeText(OTPActivity.this, "OTP Code sent", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onCodeSent: verificationCode: " + verificationCode);
+
+                try {
+//                    smsCode = phoneAuthCredential.getSmsCode();
+                    smsCode = "000000";
+                    if (smsCode != null) {
+                        et_otp.setText(smsCode);
+                        otpView.setText(smsCode);
+                        verifyOtpVerificationCode(smsCode);
+                    }
+                } catch (Exception e) {
+                    Log.i(TAG, "onVerificationCompleted failed to get CODE and error: " + e.getMessage());
+                }
             }
         };
     }
