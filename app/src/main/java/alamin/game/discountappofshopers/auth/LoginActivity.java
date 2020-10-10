@@ -75,6 +75,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ib_loginPage = findViewById(R.id.ib_loginPage);
         ib_loginPage.setOnClickListener(this);
         et_user_phone = findViewById(R.id.et_user_phone);
+        // Todo! remove setText
+        et_user_phone.setText("01944700465");
         user_panel = findViewById(R.id.user_panel);
         databaseReference = FirebaseDatabase.getInstance().getReference("Admin");
         userRef = FirebaseDatabase.getInstance().getReference("Users");

@@ -1,5 +1,6 @@
 package alamin.game.discountappofshopers.auth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +18,10 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -56,14 +61,15 @@ public class OTPActivity extends AppCompatActivity {
     private int discount = 10;
     private String smsCode;
 
-    public int counter = 30;
-    public int counter_loop = 30;
+    public int counter = 60;
+    public int counter_loop = 60;
     Button button;
     private OtpView otpView;
     private String Current_Uid;
     FusedLocationProviderClient mFusedLocationClient;
 
     private String verificationCode;
+    private ProgressBar sendOtpProgress;
 
     private TextView tv_phone_number, tv_time_counter;
     private EditText et_password, et_re_type_password, et_name, et_otp;
@@ -105,10 +111,11 @@ public class OTPActivity extends AppCompatActivity {
 
     private void findViews() {
         tv_phone_number = findViewById(R.id.tv_phone_number);
+        sendOtpProgress = findViewById(R.id.progressbar);
         btn_otp_verify = findViewById(R.id.btn_otp_verify);
         et_otp = findViewById(R.id.et_otp_code);
 
-        otpView = findViewById(R.id.otpView);
+//        otpView = findViewById(R.id.otpView);
         tv_time_counter = findViewById(R.id.tv_time_counter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
@@ -157,7 +164,7 @@ public class OTPActivity extends AppCompatActivity {
 
             public void onFinish() {
 //                tv_time_counter.setText("Please Wait....");
-                tv_time_counter.setText("ReEnter Phone Number to Resend Otp");
+                tv_time_counter.setText("Re Enter Phone Number to Resend Otp");
             }
         }.start();
     }
@@ -187,6 +194,7 @@ public class OTPActivity extends AppCompatActivity {
 
                 Log.d(TAG, "onVerificationCompleted: ");
                 Toast.makeText(OTPActivity.this, "verification completed", Toast.LENGTH_SHORT).show();
+                // Todo! uncomment the gotoNextActivity
                 gotoNextActivity(EmailSignUpActivity.class, phoneNumber, userType);
             }
 
@@ -202,18 +210,20 @@ public class OTPActivity extends AppCompatActivity {
                 verificationCode = s;
                 Toast.makeText(OTPActivity.this, "OTP Code sent", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onCodeSent: verificationCode: " + verificationCode);
+                sendOtpProgress.setVisibility(View.GONE);
 
-                try {
-//                    smsCode = phoneAuthCredential.getSmsCode();
-                    smsCode = "000000";
-                    if (smsCode != null) {
-                        et_otp.setText(smsCode);
-                        otpView.setText(smsCode);
-                        verifyOtpVerificationCode(smsCode);
-                    }
-                } catch (Exception e) {
-                    Log.i(TAG, "onVerificationCompleted failed to get CODE and error: " + e.getMessage());
-                }
+//                try {
+////                    smsCode = phoneAuthCredential.getSmsCode();
+//                    // Todo! remove smsCode = "000000"
+//                    smsCode = "000000";
+//                    if (smsCode != null) {
+//                        et_otp.setText( smsCode);
+////                        otpView.setText(smsCode);
+//                        verifyOtpVerificationCode(smsCode);
+//                    }
+//                } catch (Exception e) {
+//                    Log.i(TAG, "onVerificationCompleted failed to get CODE and error: " + e.getMessage());
+//                }
             }
         };
     }
@@ -224,12 +234,30 @@ public class OTPActivity extends AppCompatActivity {
             Log.d(TAG, "verifyOtpVerificationCode: " + code);
             if (credential != null) {
                 Log.d(TAG, "verifyOtpVerificationCode credential: " + credential);
-                gotoNextActivity(EmailSignUpActivity.class, phoneNumber, userType);
+                SignInWithPhone(credential);
 //               signInWithPhoneAuthCredential(credential);
+//                gotoNextActivity(EmailSignUpActivity.class, phoneNumber, userType);
             }
         } catch (Exception e) {
             Log.d(TAG, "verifyOtpVerificationCode error: " + e.getMessage());
         }
+    }
+
+
+    private void SignInWithPhone(PhoneAuthCredential credential) {
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(OTPActivity.this, "OTP Verified Successfully", Toast.LENGTH_SHORT).show();
+                            gotoNextActivity(EmailSignUpActivity.class, phoneNumber, userType);
+                            finish();
+                        } else {
+                            Toast.makeText(OTPActivity.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
 //    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -295,9 +323,9 @@ public class OTPActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if (otpView.getText().toString().trim().equals(smsCode)) {
-                        String otp = otpView.getText().toString().trim();
-                        Log.d(TAG, "onClick: otp: " + otp);
+                    String otp = et_otp.getText().toString().trim();
+                    Log.d(TAG, "onClick: otp: " + otp);
+                    if (!otp.isEmpty()) {
                         verifyOtpVerificationCode(otp);
                     } else {
                         Log.d(TAG, "onClick otp Code is invalid: ");
